@@ -169,6 +169,16 @@
     .chart-card { padding: 20px; }
     .chart-card h3 { font-size: 11px; font-weight: 700; color: var(--muted); margin-bottom: 14px; text-transform: uppercase; letter-spacing: .06em; }
 
+    /* ── Race picker ──────────────────────────────────────── */
+    .race-picker {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 4px;
+      color: #fff; font-size: 13px; font-weight: 600;
+      padding: 4px 8px; cursor: pointer;
+    }
+    .race-picker option { background: #1e293b; }
+
     a { color: inherit; }
     a:hover { text-decoration: underline; }
   </style>
@@ -176,7 +186,8 @@
 <body>
 
 <header>
-  <h1 id="race-name">Velogames</h1>
+  <h1>Velogames</h1>
+  <select id="race-picker" class="race-picker"></select>
   <button class="tab active" data-tab="riders">Riders</button>
   <button class="tab" data-tab="summary">Summary</button>
   <label id="compact-toggle" class="compact-label">
@@ -194,26 +205,82 @@
 const PALETTE = ['#4285f4', '#ea4335', '#fbbc04', '#34a853'];
 
 let D, teamColor, doneIdx, doneLabels;
+const charts = {};  // keyed chart instances, destroyed on race switch
 
 // ── Boot ───────────────────────────────────────────────────────
 async function init() {
+  let index;
   try {
-    D = await fetch('data/data.json').then(r => { if (!r.ok) throw r; return r.json(); });
+    index = await fetch('data/index.json').then(r => { if (!r.ok) throw r; return r.json(); });
   } catch {
     document.body.innerHTML =
-      '<p style="padding:40px;color:#ef4444">Could not load data/data.json — run scraper.py first, then serve with: <code>python3 -m http.server</code></p>';
+      '<p style="padding:40px;color:#ef4444">Could not load data/index.json — run scraper.py first, then serve with: <code>python3 -m http.server</code></p>';
     return;
   }
 
+  // Populate race picker
+  const picker = document.getElementById('race-picker');
+  index.forEach(race => {
+    const opt = document.createElement('option');
+    opt.value = race.file;
+    opt.textContent = race.name;
+    picker.appendChild(opt);
+  });
+
+  // Load first (most recent) race
+  await loadRace(index[0].file);
+
+  // Auto-enable compact on first load for long races
+  const compactToggle = document.getElementById('compact-toggle');
+  if (D.numStages > 9) {
+    document.body.classList.add('compact');
+    compactToggle.classList.add('on');
+  }
+
+  // Switch race
+  picker.addEventListener('change', e => loadRace(e.target.value));
+
+  // Tab switcher
+  document.querySelectorAll('.tab').forEach(btn =>
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    })
+  );
+
+  // Compact toggle
+  compactToggle.addEventListener('click', () => {
+    const on = document.body.classList.toggle('compact');
+    compactToggle.classList.toggle('on', on);
+  });
+}
+
+// ── Load a race by file path ───────────────────────────────────
+async function loadRace(file) {
+  try {
+    D = await fetch(file).then(r => { if (!r.ok) throw r; return r.json(); });
+  } catch {
+    alert(`Could not load ${file}`);
+    return;
+  }
+
+  const alphabetical = [...D.teams].sort((a, b) => a.name.localeCompare(b.name));
+  teamColor = {};
+  alphabetical.forEach((t, i) => { teamColor[t.tid] = PALETTE[i % PALETTE.length]; });
+
+  doneIdx    = D.stageCompleted.map((v, i) => v ? i : -1).filter(i => i >= 0);
+  doneLabels = doneIdx.map(i => D.stageLabels[i]);
+
   document.title = `Velogames — ${D.raceName}`;
-  document.getElementById('race-name').textContent = D.raceName;
   document.getElementById('league-link').href = D.leagueUrl;
+
   const upd = new Date(D.lastUpdated);
   const fmt = tz => upd.toLocaleString('en-US', {
     timeZone: tz, month: 'short', day: 'numeric',
     hour: 'numeric', minute: '2-digit', timeZoneName: 'short',
   });
-  // Adelaide: 'short' gives "GMT+9:30" in Chrome/Safari — derive abbreviation from offset instead
   const adelaideOffset = new Intl.DateTimeFormat('en-US', {
     timeZone: 'Australia/Adelaide', timeZoneName: 'shortOffset',
   }).formatToParts(upd).find(p => p.type === 'timeZoneName')?.value ?? '';
@@ -225,35 +292,12 @@ async function init() {
   document.getElementById('last-updated').innerHTML =
     `Updated ${fmt('America/New_York')}<br>${fmt('America/Los_Angeles')}<br>${fmtAdelaide}`;
 
-  // Colors assigned alphabetically (matches Google Sheets chart order)
-  const alphabetical = [...D.teams].sort((a, b) => a.name.localeCompare(b.name));
-  teamColor = {};
-  alphabetical.forEach((t, i) => { teamColor[t.tid] = PALETTE[i % PALETTE.length]; });
-
-  doneIdx    = D.stageCompleted.map((v, i) => v ? i : -1).filter(i => i >= 0);
-  doneLabels = doneIdx.map(i => D.stageLabels[i]);
+  // Destroy existing Chart.js instances before re-rendering
+  Object.values(charts).forEach(c => c.destroy());
+  for (const k in charts) delete charts[k];
 
   renderRiders();
   renderSummary();
-
-  document.querySelectorAll('.tab').forEach(btn =>
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById(btn.dataset.tab).classList.add('active');
-    })
-  );
-
-  const compactToggle = document.getElementById('compact-toggle');
-  compactToggle.addEventListener('click', () => {
-    const on = document.body.classList.toggle('compact');
-    compactToggle.classList.toggle('on', on);
-  });
-  if (D.numStages > 9) {
-    document.body.classList.add('compact');
-    compactToggle.classList.add('on');
-  }
 }
 
 // ── Riders ─────────────────────────────────────────────────────
@@ -395,7 +439,7 @@ function renderSummary() {
     borderWidth: 2, tension: 0.3, pointRadius: 4, fill: false,
   }));
 
-  new Chart(document.getElementById('c-daily'), {
+  charts.daily = new Chart(document.getElementById('c-daily'), {
     type: 'bar',
     data: { labels: doneLabels, datasets: mkDatasets('stageSums') },
     options: {
@@ -408,7 +452,7 @@ function renderSummary() {
     },
   });
 
-  new Chart(document.getElementById('c-cumul'), {
+  charts.cumul = new Chart(document.getElementById('c-cumul'), {
     type: 'line',
     data: { labels: doneLabels, datasets: mkDatasets('stageCumul') },
     options: {

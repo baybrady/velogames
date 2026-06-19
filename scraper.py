@@ -20,8 +20,22 @@ CONFIG = {
     "baseUrl":    "https://www.velogames.com/auvergne/2026/",
     "leagueId":   "118055015",
     "numStages":  9,
-    "outputPath": "data/data.json",
+    "outputPath": "data/auvergne-2026.json",
 }
+
+def update_index(config, output_path):
+    """Add this race to data/index.json (newest first) if not already present."""
+    index_path = "data/index.json"
+    index = []
+    if os.path.exists(index_path):
+        with open(index_path) as f:
+            index = json.load(f)
+    if not any(r["file"] == output_path for r in index):
+        index.insert(0, {"name": config["raceName"], "file": output_path})
+        with open(index_path, "w") as f:
+            json.dump(index, f, indent=2)
+        print(f"Updated {index_path}")
+
 
 # ── Tour de France 2026 (swap in when ready) ────────────────
 # CONFIG = {
@@ -244,6 +258,7 @@ def main():
     with open(CONFIG["outputPath"], "w") as f:
         json.dump(output, f, indent=2)
     print(f"\nWrote {CONFIG['outputPath']}")
+    update_index(CONFIG, CONFIG["outputPath"])
 
 
 if __name__ == "__main__":
