@@ -1,0 +1,577 @@
+{
+  "raceName": "Tour de Suisse 2026",
+  "leagueId": "118055015",
+  "leagueUrl": "https://www.velogames.com/suisse/2026/leaguescores.php?league=118055015",
+  "baseUrl": "https://www.velogames.com/suisse/2026/",
+  "numStages": 6,
+  "stageLabels": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "Bonus"
+  ],
+  "stageCompleted": [
+    true,
+    true,
+    false,
+    false,
+    false,
+    false
+  ],
+  "lastUpdated": "2026-06-19T09:01:26Z",
+  "teams": [
+    {
+      "tid": "681",
+      "name": "Team Mumu",
+      "score": 760,
+      "manager": "David Fullagar",
+      "stageSums": [
+        525,
+        235,
+        0,
+        0,
+        0,
+        0
+      ],
+      "stageCumul": [
+        525,
+        760,
+        760,
+        760,
+        760,
+        760
+      ]
+    },
+    {
+      "tid": "1363",
+      "name": "Billabong Bunyips",
+      "score": 698,
+      "manager": "Cathy",
+      "stageSums": [
+        393,
+        305,
+        0,
+        0,
+        0,
+        0
+      ],
+      "stageCumul": [
+        393,
+        698,
+        698,
+        698,
+        698,
+        698
+      ]
+    },
+    {
+      "tid": "2856",
+      "name": "Tandemonium",
+      "score": 534,
+      "manager": "David P",
+      "stageSums": [
+        229,
+        305,
+        0,
+        0,
+        0,
+        0
+      ],
+      "stageCumul": [
+        229,
+        534,
+        534,
+        534,
+        534,
+        534
+      ]
+    }
+  ],
+  "riders": [
+    {
+      "id": "20260609",
+      "name": "Andrea Bagioli",
+      "proTeam": "Lidl - Trek",
+      "cost": 8,
+      "finished": true,
+      "teamIds": [
+        "1363"
+      ],
+      "stages": [
+        130,
+        45,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 175,
+      "efficiency": 21.9
+    },
+    {
+      "id": "20261251",
+      "name": "Brandon McNulty",
+      "proTeam": "UAE Team Emirates - XRG",
+      "cost": 16,
+      "finished": true,
+      "teamIds": [
+        "681"
+      ],
+      "stages": [
+        106,
+        33,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 139,
+      "efficiency": 8.7
+    },
+    {
+      "id": "20260367",
+      "name": "Callum Scotson",
+      "proTeam": "Decathlon CMA CGM Team",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [
+        "2856"
+      ],
+      "stages": [
+        4,
+        4,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 8,
+      "efficiency": 1.3
+    },
+    {
+      "id": "20261405",
+      "name": "Darren Van Bekkum",
+      "proTeam": "XDS Astana Team",
+      "cost": 4,
+      "finished": true,
+      "teamIds": [
+        "681"
+      ],
+      "stages": [
+        0,
+        0,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20261525",
+      "name": "Dion Smith",
+      "proTeam": "NSN Cycling Team",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [
+        "2856"
+      ],
+      "stages": [
+        0,
+        0,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20261255",
+      "name": "Domen Novak",
+      "proTeam": "UAE Team Emirates - XRG",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [
+        "681"
+      ],
+      "stages": [
+        18,
+        12,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 30,
+      "efficiency": 5.0
+    },
+    {
+      "id": "20261247",
+      "name": "Felix Gro\u00dfschartner",
+      "proTeam": "UAE Team Emirates - XRG",
+      "cost": 10,
+      "finished": true,
+      "teamIds": [
+        "681"
+      ],
+      "stages": [
+        83,
+        12,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 95,
+      "efficiency": 9.5
+    },
+    {
+      "id": "20260961",
+      "name": "Filippo Zana",
+      "proTeam": "Soudal Quick-Step",
+      "cost": 8,
+      "finished": true,
+      "teamIds": [
+        "1363"
+      ],
+      "stages": [
+        0,
+        112,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 112,
+      "efficiency": 14.0
+    },
+    {
+      "id": "20260859",
+      "name": "Finn Fisher-Black",
+      "proTeam": "Red Bull - BORA - hansgrohe",
+      "cost": 10,
+      "finished": true,
+      "teamIds": [
+        "1363"
+      ],
+      "stages": [
+        0,
+        0,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20260850",
+      "name": "Fred Wright",
+      "proTeam": "Pinarello-Q36.5 Pro Cycling Team",
+      "cost": 8,
+      "finished": true,
+      "teamIds": [
+        "2856"
+      ],
+      "stages": [
+        0,
+        16,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 16,
+      "efficiency": 2.0
+    },
+    {
+      "id": "20261254",
+      "name": "Jhonatan Narv\u00e1ez",
+      "proTeam": "UAE Team Emirates - XRG",
+      "cost": 12,
+      "finished": true,
+      "teamIds": [
+        "681"
+      ],
+      "stages": [
+        58,
+        53,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 111,
+      "efficiency": 9.2
+    },
+    {
+      "id": "20260014",
+      "name": "Kaden Groves",
+      "proTeam": "Alpecin-Premier Tech",
+      "cost": 10,
+      "finished": true,
+      "teamIds": [
+        "1363"
+      ],
+      "stages": [
+        0,
+        0,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20260575",
+      "name": "Lucas Hamilton",
+      "proTeam": "Netcompany INEOS",
+      "cost": 4,
+      "finished": true,
+      "teamIds": [
+        "2856"
+      ],
+      "stages": [
+        0,
+        0,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20261217",
+      "name": "Marco Haller",
+      "proTeam": "Tudor Pro Cycling Team",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [
+        "1363"
+      ],
+      "stages": [
+        0,
+        0,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20260028",
+      "name": "Mathieu Van Der Poel",
+      "proTeam": "Alpecin-Premier Tech",
+      "cost": 14,
+      "finished": true,
+      "teamIds": [
+        "1363",
+        "2856"
+      ],
+      "stages": [
+        0,
+        0,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20261260",
+      "name": "Nils Politt",
+      "proTeam": "UAE Team Emirates - XRG",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [
+        "681"
+      ],
+      "stages": [
+        18,
+        12,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 30,
+      "efficiency": 5.0
+    },
+    {
+      "id": "20260537",
+      "name": "Romain Gr\u00e9goire",
+      "proTeam": "Groupama - FDJ United",
+      "cost": 14,
+      "finished": true,
+      "teamIds": [
+        "2856"
+      ],
+      "stages": [
+        0,
+        176,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 176,
+      "efficiency": 12.6
+    },
+    {
+      "id": "20260529",
+      "name": "R\u00e9mi Cavagna",
+      "proTeam": "Groupama - FDJ United",
+      "cost": 8,
+      "finished": true,
+      "teamIds": [
+        "2856"
+      ],
+      "stages": [
+        0,
+        6,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 6,
+      "efficiency": 0.8
+    },
+    {
+      "id": "20261319",
+      "name": "Simon Dalby",
+      "proTeam": "Uno-X Mobility",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [
+        "681"
+      ],
+      "stages": [
+        2,
+        0,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 2,
+      "efficiency": 0.3
+    },
+    {
+      "id": "20261259",
+      "name": "Tadej Poga\u010dar",
+      "proTeam": "UAE Team Emirates - XRG",
+      "cost": 30,
+      "finished": true,
+      "teamIds": [
+        "681",
+        "1363",
+        "2856"
+      ],
+      "stages": [
+        221,
+        101,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 322,
+      "efficiency": 10.7
+    },
+    {
+      "id": "20260623",
+      "name": "Thibau Nys",
+      "proTeam": "Lidl - Trek",
+      "cost": 10,
+      "finished": true,
+      "teamIds": [
+        "2856"
+      ],
+      "stages": [
+        4,
+        2,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 6,
+      "efficiency": 0.6
+    },
+    {
+      "id": "20260343",
+      "name": "Tiesj Benoot",
+      "proTeam": "Decathlon CMA CGM Team",
+      "cost": 8,
+      "finished": true,
+      "teamIds": [
+        "1363"
+      ],
+      "stages": [
+        8,
+        12,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 20,
+      "efficiency": 2.5
+    },
+    {
+      "id": "20261267",
+      "name": "Tim Wellens",
+      "proTeam": "UAE Team Emirates - XRG",
+      "cost": 10,
+      "finished": true,
+      "teamIds": [
+        "681"
+      ],
+      "stages": [
+        19,
+        12,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 31,
+      "efficiency": 3.1
+    },
+    {
+      "id": "20260571",
+      "name": "Tobias Foss",
+      "proTeam": "Netcompany INEOS",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [
+        "1363"
+      ],
+      "stages": [
+        34,
+        35,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 69,
+      "efficiency": 11.5
+    }
+  ]
+}

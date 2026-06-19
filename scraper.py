@@ -13,15 +13,24 @@ from datetime import datetime, timezone
 
 import requests
 
-# ── Critérium du Dauphiné 2026 ──────────────────────────────
+# ── Tour de Suisse 2026 ──────────────────────────────
 CONFIG = {
-    "raceName":   "Critérium du Dauphiné 2026",
-    "leagueUrl":  "https://www.velogames.com/auvergne/2026/leaguescores.php?league=118055015",
-    "baseUrl":    "https://www.velogames.com/auvergne/2026/",
+    "raceName":   "Tour de Suisse 2026",
+    "leagueUrl":  "https://www.velogames.com/suisse/2026/leaguescores.php?league=118055015",
+    "baseUrl":    "https://www.velogames.com/suisse/2026/",
     "leagueId":   "118055015",
-    "numStages":  9,
-    "outputPath": "data/auvergne-2026.json",
+    "numStages":  6,
+    "outputPath": "data/suisse-2026.json",
 }
+# ── Critérium du Dauphiné 2026 ──────────────────────────────
+#CONFIG = {
+#    "raceName":   "Critérium du Dauphiné 2026",
+#    "leagueUrl":  "https://www.velogames.com/auvergne/2026/leaguescores.php?league=118055015",
+#    "baseUrl":    "https://www.velogames.com/auvergne/2026/",
+#    "leagueId":   "118055015",
+#    "numStages":  9,
+#    "outputPath": "data/auvergne-2026.json",
+#}
 
 def update_index(config, output_path):
     """Add this race to data/index.json (newest first) if not already present."""
