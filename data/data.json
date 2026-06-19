@@ -1,0 +1,710 @@
+{
+  "raceName": "Crit\u00e9rium du Dauphin\u00e9 2026",
+  "leagueId": "118055015",
+  "leagueUrl": "https://www.velogames.com/auvergne/2026/leaguescores.php?league=118055015",
+  "baseUrl": "https://www.velogames.com/auvergne/2026/",
+  "numStages": 9,
+  "stageLabels": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "Bonus"
+  ],
+  "stageCompleted": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "lastUpdated": "2026-06-19T06:12:26Z",
+  "teams": [
+    {
+      "tid": "2856",
+      "name": "Tandemonium",
+      "score": 2091,
+      "manager": "David Pfitzner",
+      "stageSums": [
+        134,
+        40,
+        169,
+        115,
+        266,
+        38,
+        318,
+        346,
+        665
+      ],
+      "stageCumul": [
+        134,
+        174,
+        343,
+        458,
+        724,
+        762,
+        1080,
+        1426,
+        2091
+      ]
+    },
+    {
+      "tid": "93141",
+      "name": "Spinzealot",
+      "score": 1539,
+      "manager": "Mark B",
+      "stageSums": [
+        71,
+        40,
+        167,
+        79,
+        202,
+        39,
+        281,
+        210,
+        450
+      ],
+      "stageCumul": [
+        71,
+        111,
+        278,
+        357,
+        559,
+        598,
+        879,
+        1089,
+        1539
+      ]
+    },
+    {
+      "tid": "681",
+      "name": "Team Mumu",
+      "score": 1391,
+      "manager": "David",
+      "stageSums": [
+        148,
+        54,
+        219,
+        103,
+        91,
+        33,
+        245,
+        178,
+        320
+      ],
+      "stageCumul": [
+        148,
+        202,
+        421,
+        524,
+        615,
+        648,
+        893,
+        1071,
+        1391
+      ]
+    },
+    {
+      "tid": "1363",
+      "name": "Billabong Bunyips",
+      "score": 819,
+      "manager": "Cathy",
+      "stageSums": [
+        98,
+        69,
+        105,
+        190,
+        218,
+        22,
+        81,
+        6,
+        30
+      ],
+      "stageCumul": [
+        98,
+        167,
+        272,
+        462,
+        680,
+        702,
+        783,
+        789,
+        819
+      ]
+    }
+  ],
+  "riders": [
+    {
+      "id": "20260399",
+      "name": "Alastair MacKellar",
+      "proTeam": "EF Education - EasyPost",
+      "cost": 4,
+      "finished": true,
+      "teamIds": [
+        "681"
+      ],
+      "stages": [
+        22,
+        6,
+        26,
+        6,
+        6,
+        0,
+        0,
+        0,
+        0
+      ],
+      "total": 66,
+      "efficiency": 16.5
+    },
+    {
+      "id": "20260394",
+      "name": "Ben Healy",
+      "proTeam": "EF Education - EasyPost",
+      "cost": 12,
+      "finished": true,
+      "teamIds": [
+        "2856",
+        "93141",
+        "681"
+      ],
+      "stages": [
+        12,
+        6,
+        26,
+        6,
+        6,
+        0,
+        0,
+        0,
+        0
+      ],
+      "total": 56,
+      "efficiency": 4.7
+    },
+    {
+      "id": "20260296",
+      "name": "Bryan Coquard",
+      "proTeam": "Cofidis",
+      "cost": 8,
+      "finished": true,
+      "teamIds": [
+        "2856"
+      ],
+      "stages": [
+        0,
+        0,
+        0,
+        20,
+        40,
+        0,
+        0,
+        0,
+        0
+      ],
+      "total": 60,
+      "efficiency": 7.5
+    },
+    {
+      "id": "20260584",
+      "name": "Carlos Rodr\u00edguez",
+      "proTeam": "Netcompany INEOS",
+      "cost": 8,
+      "finished": true,
+      "teamIds": [
+        "2856"
+      ],
+      "stages": [
+        2,
+        2,
+        44,
+        21,
+        21,
+        1,
+        14,
+        100,
+        90
+      ],
+      "total": 295,
+      "efficiency": 36.9
+    },
+    {
+      "id": "20261138",
+      "name": "Edoardo Affini",
+      "proTeam": "Team Visma | Lease a Bike",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [
+        "93141",
+        "1363"
+      ],
+      "stages": [
+        6,
+        4,
+        34,
+        6,
+        10,
+        6,
+        6,
+        6,
+        30
+      ],
+      "total": 108,
+      "efficiency": 18.0
+    },
+    {
+      "id": "20260938",
+      "name": "Ethan Hayter",
+      "proTeam": "Soudal Quick-Step",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [
+        "2856"
+      ],
+      "stages": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20260859",
+      "name": "Finn Fisher-Black",
+      "proTeam": "Red Bull - BORA - hansgrohe",
+      "cost": 10,
+      "finished": true,
+      "teamIds": [
+        "1363"
+      ],
+      "stages": [
+        0,
+        40,
+        10,
+        134,
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      "total": 187,
+      "efficiency": 18.7
+    },
+    {
+      "id": "20261246",
+      "name": "Isaac Del Toro",
+      "proTeam": "UAE Team Emirates - XRG",
+      "cost": 20,
+      "finished": true,
+      "teamIds": [
+        "2856",
+        "93141"
+      ],
+      "stages": [
+        33,
+        10,
+        5,
+        7,
+        7,
+        11,
+        186,
+        192,
+        385
+      ],
+      "total": 836,
+      "efficiency": 41.8
+    },
+    {
+      "id": "20261100",
+      "name": "James Knox",
+      "proTeam": "Team Picnic PostNL",
+      "cost": 4,
+      "finished": true,
+      "teamIds": [
+        "681"
+      ],
+      "stages": [
+        0,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "total": 4,
+      "efficiency": 1.0
+    },
+    {
+      "id": "20260591",
+      "name": "Joshua Tarling",
+      "proTeam": "Netcompany INEOS",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [
+        "93141"
+      ],
+      "stages": [
+        2,
+        2,
+        33,
+        8,
+        8,
+        0,
+        0,
+        0,
+        0
+      ],
+      "total": 53,
+      "efficiency": 8.8
+    },
+    {
+      "id": "20261240",
+      "name": "Jo\u00e3o Almeida",
+      "proTeam": "UAE Team Emirates - XRG",
+      "cost": 18,
+      "finished": true,
+      "teamIds": [
+        "1363"
+      ],
+      "stages": [
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "total": 2,
+      "efficiency": 0.1
+    },
+    {
+      "id": "20260608",
+      "name": "Juan Ayuso",
+      "proTeam": "Lidl - Trek",
+      "cost": 16,
+      "finished": true,
+      "teamIds": [
+        "681"
+      ],
+      "stages": [
+        5,
+        1,
+        31,
+        22,
+        16,
+        13,
+        153,
+        152,
+        225
+      ],
+      "total": 618,
+      "efficiency": 38.6
+    },
+    {
+      "id": "20261104",
+      "name": "Juan Guillermo Martinez",
+      "proTeam": "Team Picnic PostNL",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [
+        "2856"
+      ],
+      "stages": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20260593",
+      "name": "K\u00e9vin Vauquelin",
+      "proTeam": "Netcompany INEOS",
+      "cost": 12,
+      "finished": true,
+      "teamIds": [
+        "681"
+      ],
+      "stages": [
+        54,
+        16,
+        51,
+        26,
+        26,
+        6,
+        7,
+        16,
+        75
+      ],
+      "total": 277,
+      "efficiency": 23.1
+    },
+    {
+      "id": "20260616",
+      "name": "Lennard K\u00e4mna",
+      "proTeam": "Lidl - Trek",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [
+        "93141",
+        "681"
+      ],
+      "stages": [
+        0,
+        0,
+        15,
+        6,
+        0,
+        0,
+        10,
+        10,
+        20
+      ],
+      "total": 61,
+      "efficiency": 10.2
+    },
+    {
+      "id": "20261061",
+      "name": "Luke Plapp",
+      "proTeam": "Team Jayco AlUla",
+      "cost": 10,
+      "finished": true,
+      "teamIds": [
+        "2856",
+        "1363"
+      ],
+      "stages": [
+        74,
+        11,
+        8,
+        10,
+        10,
+        2,
+        0,
+        0,
+        0
+      ],
+      "total": 115,
+      "efficiency": 11.5
+    },
+    {
+      "id": "20260127",
+      "name": "Matej Mohori\u010d",
+      "proTeam": "Bahrain - Victorious",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [
+        "93141",
+        "1363"
+      ],
+      "stages": [
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "total": 2,
+      "efficiency": 0.3
+    },
+    {
+      "id": "20261149",
+      "name": "Matteo Jorgenson",
+      "proTeam": "Team Visma | Lease a Bike",
+      "cost": 18,
+      "finished": true,
+      "teamIds": [
+        "2856"
+      ],
+      "stages": [
+        7,
+        7,
+        52,
+        22,
+        28,
+        24,
+        118,
+        54,
+        190
+      ],
+      "total": 502,
+      "efficiency": 27.9
+    },
+    {
+      "id": "20261233",
+      "name": "Matteo Trentin",
+      "proTeam": "Tudor Pro Cycling Team",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [
+        "1363"
+      ],
+      "stages": [
+        0,
+        0,
+        0,
+        0,
+        30,
+        0,
+        0,
+        0,
+        0
+      ],
+      "total": 30,
+      "efficiency": 5.0
+    },
+    {
+      "id": "20260581",
+      "name": "Oscar Onley",
+      "proTeam": "Netcompany INEOS",
+      "cost": 14,
+      "finished": true,
+      "teamIds": [
+        "681"
+      ],
+      "stages": [
+        43,
+        15,
+        51,
+        26,
+        26,
+        0,
+        0,
+        0,
+        0
+      ],
+      "total": 161,
+      "efficiency": 11.5
+    },
+    {
+      "id": "20260368",
+      "name": "Paul Seixas",
+      "proTeam": "Decathlon CMA CGM Team",
+      "cost": 26,
+      "finished": true,
+      "teamIds": [
+        "93141",
+        "681",
+        "1363"
+      ],
+      "stages": [
+        8,
+        6,
+        14,
+        11,
+        11,
+        14,
+        75,
+        0,
+        0
+      ],
+      "total": 139,
+      "efficiency": 5.3
+    },
+    {
+      "id": "20260547",
+      "name": "Quentin Pacher",
+      "proTeam": "Groupama - FDJ United",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [
+        "93141"
+      ],
+      "stages": [
+        4,
+        6,
+        6,
+        6,
+        6,
+        8,
+        4,
+        2,
+        15
+      ],
+      "total": 57,
+      "efficiency": 9.5
+    },
+    {
+      "id": "20260345",
+      "name": "Stefan Bissegger",
+      "proTeam": "Decathlon CMA CGM Team",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [
+        "681",
+        "1363"
+      ],
+      "stages": [
+        4,
+        0,
+        5,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "total": 9,
+      "efficiency": 1.5
+    },
+    {
+      "id": "20261162",
+      "name": "Wout Van Aert",
+      "proTeam": "Team Visma | Lease a Bike",
+      "cost": 12,
+      "finished": true,
+      "teamIds": [
+        "2856",
+        "93141",
+        "1363"
+      ],
+      "stages": [
+        6,
+        4,
+        34,
+        29,
+        154,
+        0,
+        0,
+        0,
+        0
+      ],
+      "total": 227,
+      "efficiency": 18.9
+    }
+  ]
+}

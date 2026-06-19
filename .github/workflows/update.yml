@@ -1,0 +1,38 @@
+name: Update race data
+
+on:
+  schedule:
+    # Every 30 minutes, 10:00–22:30 UTC — covers stage finishes across time zones.
+    # GitHub Actions cron is best-effort and may run a few minutes late.
+    - cron: '0,30 10-22 * * *'
+  workflow_dispatch:  # allow manual trigger from the Actions tab
+
+permissions:
+  contents: write   # needed to commit and push data/data.json
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run scraper
+        run: python scraper.py
+
+      - name: Commit and push if data changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/data.json
+          git diff --staged --quiet && echo "No changes." || (
+            git commit -m "Update race data $(date -u '+%Y-%m-%d %H:%M UTC')" &&
+            git push
+          )

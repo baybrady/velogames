@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velogames</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #f1f5f9;
+      --card: #fff;
+      --border: #e2e8f0;
+      --th-bg: #1e293b;
+      --th-text: #fff;
+      --row-hover: #f0f7ff;
+      --accent: #f59e0b;
+      --muted: #64748b;
+      --text: #0f172a;
+      --green-win: #c6efce;
+      --green-win-text: #276221;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); font-size: 13px; }
+
+    /* ── Header ───────────────────────────────────────────── */
+    header {
+      background: var(--th-bg); color: var(--th-text);
+      padding: 13px 24px;
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+    header h1 { font-size: 17px; font-weight: 700; }
+    header a  { color: var(--accent); text-decoration: none; font-size: 12px; }
+    header a:hover { text-decoration: underline; }
+    #last-updated { color: #94a3b8; font-size: 11px; margin-left: auto; text-align: right; line-height: 1.35; }
+
+    /* ── Tabs ─────────────────────────────────────────────── */
+    /* ── Tab buttons (live inside the header bar) ────────── */
+    .tab {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 4px;
+      padding: 4px 14px;
+      font-size: 13px; font-weight: 500;
+      color: rgba(255,255,255,0.65);
+      cursor: pointer; white-space: nowrap;
+    }
+    .tab.active  { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .tab:hover:not(.active) { background: rgba(255,255,255,0.18); color: #fff; }
+
+    /* ── Panels ───────────────────────────────────────────── */
+    .panel { display: none; padding: 18px 24px; }
+    .panel.active { display: block; }
+
+    /* ── Card ─────────────────────────────────────────────── */
+    .card { background: var(--card); border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); overflow: hidden; }
+    .table-wrap { overflow-x: auto; }
+
+    /* ── Tables ───────────────────────────────────────────── */
+    table { border-collapse: collapse; font-size: 13px; }
+    th {
+      background: var(--th-bg); color: var(--th-text);
+      padding: 8px 8px; text-align: right;
+      white-space: nowrap; user-select: none;
+    }
+    th.lft { text-align: left; }
+    th[data-sort] { cursor: pointer; }
+    th[data-sort]:hover { background: #2d3f55; }
+    th.sort-asc::after  { content: ' ▲'; color: var(--accent); font-size: 9px; }
+    th.sort-desc::after { content: ' ▼'; color: var(--accent); font-size: 9px; }
+
+    td {
+      padding: 4px 8px;
+      border-bottom: 1px solid var(--border);
+      text-align: right; white-space: nowrap;
+    }
+    td.lft { text-align: left; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: var(--row-hover); }
+
+    /* ── Team-header columns (rotated) ───────────────────── */
+    th.team-hdr {
+      writing-mode: vertical-rl; transform: rotate(180deg);
+      width: 28px; min-width: 28px;
+      font-size: 11px; padding: 10px 6px; text-align: left; cursor: pointer;
+    }
+    th.team-hdr:hover { background: #2d3f55; }
+    td.team-cell { width: 28px; min-width: 28px; text-align: center; font-size: 11px; padding: 4px 0; }
+
+    /* ── Fixed-width columns (overridden in compact mode) ─── */
+    #t-riders, #t-summary { table-layout: fixed; }
+    th.w-stage  { width: 50px; }
+    th.w-bonus  { width: 58px; }
+    th.w-rider  { width: 155px; }
+    th.w-proteam{ width: 165px; }
+    th.w-cost   { width: 44px; }
+    th.w-total-r{ width: 52px; }
+    th.w-eff    { width: 42px; }
+    th.w-team   { width: 170px; }
+    th.w-total-s{ width: 60px; }
+
+    /* ── Compact mode ─────────────────────────────────────── */
+    body.compact { font-size: 11px; }
+    body.compact td { padding: 2px 5px; }
+    body.compact th { padding: 6px 5px; }
+    body.compact th.w-stage   { width: 32px; }
+    body.compact th.w-bonus   { width: 44px; }
+    body.compact th.w-rider   { width: 130px; }
+    body.compact th.w-cost    { width: 34px; }
+    body.compact th.w-total-r { width: 44px; }
+    body.compact th.w-eff     { width: 32px; }
+    body.compact th.w-team    { width: 150px; }
+    body.compact th.w-total-s { width: 50px; }
+    body.compact th.team-hdr  { width: 20px; min-width: 20px; }
+    body.compact td.team-cell { width: 20px; min-width: 20px; }
+    body.compact .col-proteam { display: none; }
+
+    /* ── Compact toggle ───────────────────────────────────── */
+    .compact-label {
+      display: flex; align-items: center; gap: 7px;
+      color: rgba(255,255,255,0.6); font-size: 12px;
+      cursor: pointer; user-select: none; white-space: nowrap;
+      margin-left: 4px;
+    }
+    .compact-label:hover { color: rgba(255,255,255,0.9); }
+    .toggle-track {
+      display: inline-block; width: 32px; height: 18px;
+      background: rgba(255,255,255,0.2); border-radius: 9px;
+      position: relative; transition: background .2s; flex-shrink: 0;
+    }
+    .toggle-knob {
+      position: absolute; top: 2px; left: 2px;
+      width: 14px; height: 14px;
+      background: #fff; border-radius: 50%;
+      transition: left .2s;
+    }
+    .compact-label.on .toggle-track { background: var(--accent); }
+    .compact-label.on .toggle-knob  { left: 16px; }
+
+    /* ── Heatmap ──────────────────────────────────────────── */
+    td.heat { font-weight: 500; }
+
+    /* ── Stage-winner highlight ───────────────────────────── */
+    td.winner { background: var(--green-win) !important; color: var(--green-win-text); font-weight: 700; }
+
+    /* ── DNF rows ─────────────────────────────────────────── */
+    tr.dnf td { color: #94a3b8; }
+    tr.dnf td.heat { color: #94a3b8 !important; }
+
+    /* ── Summary section headers ──────────────────────────── */
+    tr.section-hdr td {
+      background: #f8fafc;
+      font-weight: 700; font-size: 11px;
+      text-transform: uppercase; letter-spacing: .06em;
+      color: var(--muted);
+      padding: 10px 8px 5px;
+      border-top: 2px solid var(--border);
+    }
+    tbody:first-child tr.section-hdr td { border-top: none; }
+
+    /* ── Color dot ────────────────────────────────────────── */
+    .color-dot {
+      display: inline-block; width: 9px; height: 9px;
+      border-radius: 50%; margin-right: 6px; vertical-align: middle;
+    }
+
+    /* ── Charts ───────────────────────────────────────────── */
+    .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+    @media (max-width: 900px) { .charts-grid { grid-template-columns: 1fr; } }
+    .chart-card { padding: 20px; }
+    .chart-card h3 { font-size: 11px; font-weight: 700; color: var(--muted); margin-bottom: 14px; text-transform: uppercase; letter-spacing: .06em; }
+
+    a { color: inherit; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 id="race-name">Velogames</h1>
+  <button class="tab active" data-tab="riders">Riders</button>
+  <button class="tab" data-tab="summary">Summary</button>
+  <label id="compact-toggle" class="compact-label">
+    Compact
+    <span class="toggle-track"><span class="toggle-knob"></span></span>
+  </label>
+  <a id="league-link" href="#" target="_blank">League page ↗</a>
+  <span id="last-updated"></span>
+</header>
+
+<div id="riders"  class="panel active"></div>
+<div id="summary" class="panel"></div>
+
+<script>
+const PALETTE = ['#4285f4', '#ea4335', '#fbbc04', '#34a853'];
+
+let D, teamColor, doneIdx, doneLabels;
+
+// ── Boot ───────────────────────────────────────────────────────
+async function init() {
+  try {
+    D = await fetch('data/data.json').then(r => { if (!r.ok) throw r; return r.json(); });
+  } catch {
+    document.body.innerHTML =
+      '<p style="padding:40px;color:#ef4444">Could not load data/data.json — run scraper.py first, then serve with: <code>python3 -m http.server</code></p>';
+    return;
+  }
+
+  document.title = `Velogames — ${D.raceName}`;
+  document.getElementById('race-name').textContent = D.raceName;
+  document.getElementById('league-link').href = D.leagueUrl;
+  const upd = new Date(D.lastUpdated);
+  const fmt = tz => upd.toLocaleString('en-US', {
+    timeZone: tz, month: 'short', day: 'numeric',
+    hour: 'numeric', minute: '2-digit', timeZoneName: 'short',
+  });
+  // Adelaide: 'short' gives "GMT+9:30" in Chrome/Safari — derive abbreviation from offset instead
+  const adelaideOffset = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Australia/Adelaide', timeZoneName: 'shortOffset',
+  }).formatToParts(upd).find(p => p.type === 'timeZoneName')?.value ?? '';
+  const adelaideAbbr = adelaideOffset === 'GMT+9:30' ? 'ACST' : 'ACDT';
+  const fmtAdelaide  = upd.toLocaleString('en-US', {
+    timeZone: 'Australia/Adelaide', month: 'short', day: 'numeric',
+    hour: 'numeric', minute: '2-digit',
+  }) + ' ' + adelaideAbbr;
+  document.getElementById('last-updated').innerHTML =
+    `Updated ${fmt('America/New_York')}<br>${fmt('America/Los_Angeles')}<br>${fmtAdelaide}`;
+
+  // Colors assigned alphabetically (matches Google Sheets chart order)
+  const alphabetical = [...D.teams].sort((a, b) => a.name.localeCompare(b.name));
+  teamColor = {};
+  alphabetical.forEach((t, i) => { teamColor[t.tid] = PALETTE[i % PALETTE.length]; });
+
+  doneIdx    = D.stageCompleted.map((v, i) => v ? i : -1).filter(i => i >= 0);
+  doneLabels = doneIdx.map(i => D.stageLabels[i]);
+
+  renderRiders();
+  renderSummary();
+
+  document.querySelectorAll('.tab').forEach(btn =>
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    })
+  );
+
+  const compactToggle = document.getElementById('compact-toggle');
+  compactToggle.addEventListener('click', () => {
+    const on = document.body.classList.toggle('compact');
+    compactToggle.classList.toggle('on', on);
+  });
+  if (D.numStages > 9) {
+    document.body.classList.add('compact');
+    compactToggle.classList.add('on');
+  }
+}
+
+// ── Riders ─────────────────────────────────────────────────────
+function renderRiders() {
+  const n       = D.numStages;
+  // Team columns in alphabetical order (matches color assignment)
+  const teamCols = [...D.teams].sort((a, b) => a.name.localeCompare(b.name));
+  const T        = teamCols.length;
+
+  let maxVal = 0;
+  for (const r of D.riders)
+    for (const v of r.stages)
+      if (v != null && v > maxVal) maxVal = v;
+
+  // Column layout:
+  // 0..T-1       : team membership
+  // T            : Rider
+  // T+1          : Pro Team
+  // T+2          : Cost
+  // T+3..T+3+n-1 : stages
+  // T+3+n        : Total
+  // T+3+n+1      : Efficiency
+
+  const teamHdrs = teamCols.map((t, i) =>
+    `<th class="team-hdr" data-sort="${i}" data-type="num" style="background:${teamColor[t.tid]}" title="${t.name}">${t.name}</th>`
+  ).join('');
+
+  const stageHdrs = D.stageLabels.map((lbl, i) => {
+    const cls = lbl === 'Bonus' ? 'w-bonus' : 'w-stage';
+    return `<th class="${cls}" data-sort="${T + 3 + i}" data-type="num">${lbl}</th>`;
+  }).join('');
+
+  let html = `<div class="card"><div class="table-wrap"><table id="t-riders">
+    <thead><tr>
+      ${teamHdrs}
+      <th class="lft w-rider"   data-sort="${T}">Rider</th>
+      <th class="lft w-proteam col-proteam" data-sort="${T+1}">Pro Team</th>
+      <th class="w-cost"        data-sort="${T+2}" data-type="num">Cost</th>
+      ${stageHdrs}
+      <th class="w-total-r" data-sort="${T+3+n}"   data-type="num">Total</th>
+      <th class="w-eff"     data-sort="${T+3+n+1}" data-type="num">Eff</th>
+    </tr></thead><tbody>`;
+
+  for (const rider of D.riders) {
+    const url = D.baseUrl + 'riderprofile.php?rider=' + rider.id;
+    const dnf = rider.finished ? '' : ' class="dnf"';
+
+    const teamCells = teamCols.map(t =>
+      `<td class="team-cell">${rider.teamIds.includes(t.tid) ? '●' : ''}</td>`
+    ).join('');
+
+    const stageCells = rider.stages.map(v => {
+      if (v === null) return '<td>—</td>';
+      if (v === 0)    return '<td>0</td>';
+      const t  = maxVal > 0 ? v / maxVal : 0;
+      const bg = heatRgb(t);
+      const fg = t > 0.55 ? 'color:#fff' : '';
+      return `<td class="heat" style="background:${bg};${fg}">${v}</td>`;
+    }).join('');
+
+    html += `<tr${dnf} data-tids="${rider.teamIds.join(',')}">
+      ${teamCells}
+      <td class="lft"><a href="${url}" target="_blank">${rider.name}${rider.finished ? '' : ' †'}</a></td>
+      <td class="lft col-proteam">${rider.proTeam}</td>
+      <td>${rider.cost}</td>
+      ${stageCells}
+      <td><strong>${rider.total}</strong></td>
+      <td>${rider.efficiency}</td>
+    </tr>`;
+  }
+
+  html += '</tbody></table></div></div>';
+  document.getElementById('riders').innerHTML = html;
+  sortable('t-riders', T, true);
+}
+
+// ── Summary (Daily + Cumulative + Charts) ──────────────────────
+function renderSummary() {
+  const colSpan = 2 + doneIdx.length; // Team + stages + Total
+
+  // Teams in alphabetical order (consistent with Riders tab and chart colors)
+  const sorted = [...D.teams].sort((a, b) => a.name.localeCompare(b.name));
+
+  const dailyMax = doneIdx.map(si => Math.max(...D.teams.map(t => t.stageSums[si]  ?? 0)));
+  const cumulMax = doneIdx.map(si => Math.max(...D.teams.map(t => t.stageCumul[si] ?? 0)));
+
+  const stageHdrs = doneIdx.map(si => {
+    const lbl = D.stageLabels[si];
+    const cls = lbl === 'Bonus' ? 'w-bonus' : 'w-stage';
+    return `<th class="${cls}">${lbl}</th>`;
+  }).join('');
+
+  function sectionRows(field, maxes) {
+    return sorted.map(t => {
+      const url  = D.baseUrl + 'teamroster.php?tid=' + t.tid;
+      const dot  = `<span class="color-dot" style="background:${teamColor[t.tid]}"></span>`;
+      const cells = doneIdx.map((si, ci) => {
+        const v   = t[field][si] ?? 0;
+        const win = v === maxes[ci];
+        return `<td${win ? ' class="winner"' : ''}>${v.toLocaleString()}</td>`;
+      }).join('');
+      const total = t[field][doneIdx.at(-1)] ?? 0;
+      return `<tr>
+        <td class="lft">${dot}<a href="${url}" target="_blank">${t.name}</a></td>
+        ${cells}
+        <td><strong>${total.toLocaleString()}</strong></td>
+      </tr>`;
+    }).join('');
+  }
+
+  const html = `
+    <div class="card"><div class="table-wrap"><table id="t-summary">
+      <thead><tr>
+        <th class="lft w-team">Team</th>
+        ${stageHdrs}
+        <th class="w-total-s">Total</th>
+      </tr></thead>
+      <tbody>
+        <tr class="section-hdr"><td colspan="${colSpan}">Daily</td></tr>
+        ${sectionRows('stageSums', dailyMax)}
+      </tbody>
+      <tbody>
+        <tr class="section-hdr"><td colspan="${colSpan}">Cumulative</td></tr>
+        ${sectionRows('stageCumul', cumulMax)}
+      </tbody>
+    </table></div></div>
+    <div class="charts-grid">
+      <div class="card chart-card"><h3>Daily Stage Points</h3><canvas id="c-daily"></canvas></div>
+      <div class="card chart-card"><h3>Cumulative Points</h3><canvas id="c-cumul"></canvas></div>
+    </div>`;
+
+  document.getElementById('summary').innerHTML = html;
+
+  const mkDatasets = field => sorted.map(t => ({
+    label:           t.name,
+    data:            doneIdx.map(i => t[field][i] ?? 0),
+    backgroundColor: teamColor[t.tid],
+    borderColor:     teamColor[t.tid],
+    borderWidth: 2, tension: 0.3, pointRadius: 4, fill: false,
+  }));
+
+  new Chart(document.getElementById('c-daily'), {
+    type: 'bar',
+    data: { labels: doneLabels, datasets: mkDatasets('stageSums') },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: 'bottom' } },
+      scales: {
+        x: { title: { display: true, text: 'Stage' } },
+        y: { title: { display: true, text: 'Points' }, beginAtZero: true },
+      },
+    },
+  });
+
+  new Chart(document.getElementById('c-cumul'), {
+    type: 'line',
+    data: { labels: doneLabels, datasets: mkDatasets('stageCumul') },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: 'bottom' } },
+      scales: {
+        x: { title: { display: true, text: 'Stage' } },
+        y: { title: { display: true, text: 'Points' }, beginAtZero: true },
+      },
+    },
+  });
+}
+
+// ── Sortable ───────────────────────────────────────────────────
+function sortable(tableId, initCol, initAsc) {
+  const tbl     = document.getElementById(tableId);
+  if (!tbl) return;
+  const headers = [...tbl.querySelectorAll('th[data-sort]')];
+  let col = initCol ?? null, asc = initAsc ?? true;
+
+  function applySort() {
+    headers.forEach(h => h.classList.remove('sort-asc', 'sort-desc'));
+    const th   = headers.find(h => +h.dataset.sort === col);
+    if (th) th.classList.add(asc ? 'sort-asc' : 'sort-desc');
+    const type  = th?.dataset.type || 'text';
+    const tbody = tbl.querySelector('tbody');
+    const rows  = [...tbody.querySelectorAll('tr')];
+    rows.sort((a, b) => {
+      const av = a.cells[col]?.textContent.trim() ?? '';
+      const bv = b.cells[col]?.textContent.trim() ?? '';
+      let cmp;
+      if (type === 'num') {
+        const an = (av === '—' || av === '') ? -Infinity : parseFloat(av.replace(/[^0-9.\-]/g, '')) || 0;
+        const bn = (bv === '—' || bv === '') ? -Infinity : parseFloat(bv.replace(/[^0-9.\-]/g, '')) || 0;
+        cmp = an - bn;
+      } else {
+        cmp = av.replace(/[†↗●]/g, '').trim().localeCompare(bv.replace(/[†↗●]/g, '').trim());
+      }
+      return asc ? cmp : -cmp;
+    });
+    rows.forEach(r => tbody.appendChild(r));
+  }
+
+  if (col != null) applySort();
+
+  headers.forEach(th =>
+    th.addEventListener('click', () => {
+      const c = +th.dataset.sort;
+      if (col === c) asc = !asc;
+      else { col = c; asc = th.dataset.type !== 'num'; }
+      applySort();
+    })
+  );
+}
+
+// ── Heatmap: white → dark green ───────────────────────────────
+function heatRgb(t) {
+  return `rgb(${Math.round(255 + t*(0-255))},${Math.round(255 + t*(130-255))},${Math.round(255 + t*(60-255))})`;
+}
+
+init();
+</script>
+</body>
+</html>
