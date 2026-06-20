@@ -16,22 +16,22 @@
     true,
     true,
     true,
-    false,
+    true,
     false,
     false
   ],
-  "lastUpdated": "2026-06-20T15:48:04Z",
+  "lastUpdated": "2026-06-20T17:25:05Z",
   "teams": [
     {
       "tid": "681",
       "name": "Team Mumu",
-      "score": 1156,
+      "score": 1584,
       "manager": "David Fullagar",
       "stageSums": [
         525,
         235,
         396,
-        0,
+        428,
         0,
         0
       ],
@@ -39,21 +39,21 @@
         525,
         760,
         1156,
-        1156,
-        1156,
-        1156
+        1584,
+        1584,
+        1584
       ]
     },
     {
       "tid": "1363",
       "name": "Billabong Bunyips",
-      "score": 925,
+      "score": 1404,
       "manager": "Cathy",
       "stageSums": [
         393,
         305,
         227,
-        0,
+        479,
         0,
         0
       ],
@@ -61,21 +61,21 @@
         393,
         698,
         925,
-        925,
-        925,
-        925
+        1404,
+        1404,
+        1404
       ]
     },
     {
       "tid": "2856",
       "name": "Tandemonium",
-      "score": 703,
+      "score": 1045,
       "manager": "David P",
       "stageSums": [
         229,
         305,
         169,
-        0,
+        342,
         0,
         0
       ],
@@ -83,9 +83,9 @@
         229,
         534,
         703,
-        703,
-        703,
-        703
+        1045,
+        1045,
+        1045
       ]
     }
   ],
@@ -103,12 +103,12 @@
         130,
         45,
         20,
-        null,
+        18,
         null,
         null
       ],
-      "total": 195,
-      "efficiency": 24.4
+      "total": 213,
+      "efficiency": 26.6
     },
     {
       "id": "20261251",
@@ -123,12 +123,12 @@
         106,
         33,
         33,
-        null,
+        56,
         null,
         null
       ],
-      "total": 172,
-      "efficiency": 10.8
+      "total": 228,
+      "efficiency": 14.2
     },
     {
       "id": "20260367",
@@ -143,7 +143,7 @@
         4,
         4,
         4,
-        null,
+        0,
         null,
         null
       ],
@@ -163,7 +163,7 @@
         0,
         0,
         0,
-        null,
+        0,
         null,
         null
       ],
@@ -183,7 +183,7 @@
         0,
         0,
         0,
-        null,
+        0,
         null,
         null
       ],
@@ -203,7 +203,7 @@
         18,
         12,
         18,
-        null,
+        0,
         null,
         null
       ],
@@ -223,12 +223,12 @@
         83,
         12,
         19,
-        null,
+        74,
         null,
         null
       ],
-      "total": 114,
-      "efficiency": 11.4
+      "total": 188,
+      "efficiency": 18.8
     },
     {
       "id": "20260961",
@@ -243,7 +243,7 @@
         0,
         112,
         2,
-        null,
+        0,
         null,
         null
       ],
@@ -263,12 +263,12 @@
         0,
         0,
         30,
-        null,
+        30,
         null,
         null
       ],
-      "total": 30,
-      "efficiency": 3.0
+      "total": 60,
+      "efficiency": 6.0
     },
     {
       "id": "20260850",
@@ -283,12 +283,12 @@
         0,
         16,
         4,
-        null,
+        25,
         null,
         null
       ],
-      "total": 20,
-      "efficiency": 2.5
+      "total": 45,
+      "efficiency": 5.6
     },
     {
       "id": "20261254",
@@ -303,12 +303,12 @@
         58,
         53,
         215,
-        null,
+        17,
         null,
         null
       ],
-      "total": 326,
-      "efficiency": 27.2
+      "total": 343,
+      "efficiency": 28.6
     },
     {
       "id": "20260014",
@@ -323,7 +323,7 @@
         0,
         0,
         0,
-        null,
+        0,
         null,
         null
       ],
@@ -343,7 +343,7 @@
         0,
         0,
         0,
-        null,
+        0,
         null,
         null
       ],
@@ -363,7 +363,7 @@
         0,
         0,
         0,
-        null,
+        0,
         null,
         null
       ],
@@ -384,12 +384,12 @@
         0,
         0,
         80,
-        null,
+        120,
         null,
         null
       ],
-      "total": 80,
-      "efficiency": 5.7
+      "total": 200,
+      "efficiency": 14.3
     },
     {
       "id": "20261260",
@@ -404,12 +404,12 @@
         18,
         12,
         18,
-        null,
+        10,
         null,
         null
       ],
-      "total": 48,
-      "efficiency": 8.0
+      "total": 58,
+      "efficiency": 9.7
     },
     {
       "id": "20260537",
@@ -424,12 +424,12 @@
         0,
         176,
         6,
-        null,
+        6,
         null,
         null
       ],
-      "total": 182,
-      "efficiency": 13.0
+      "total": 188,
+      "efficiency": 13.4
     },
     {
       "id": "20260529",
@@ -444,7 +444,7 @@
         0,
         6,
         0,
-        null,
+        0,
         null,
         null
       ],
@@ -464,7 +464,7 @@
         2,
         0,
         2,
-        null,
+        0,
         null,
         null
       ],
@@ -486,12 +486,12 @@
         221,
         101,
         73,
-        null,
+        191,
         null,
         null
       ],
-      "total": 395,
-      "efficiency": 13.2
+      "total": 586,
+      "efficiency": 19.5
     },
     {
       "id": "20260623",
@@ -506,7 +506,7 @@
         4,
         2,
         2,
-        null,
+        0,
         null,
         null
       ],
@@ -526,12 +526,12 @@
         8,
         12,
         12,
-        null,
+        5,
         null,
         null
       ],
-      "total": 32,
-      "efficiency": 4.0
+      "total": 37,
+      "efficiency": 4.6
     },
     {
       "id": "20261267",
@@ -546,12 +546,12 @@
         19,
         12,
         18,
-        null,
+        80,
         null,
         null
       ],
-      "total": 49,
-      "efficiency": 4.9
+      "total": 129,
+      "efficiency": 12.9
     },
     {
       "id": "20260571",
@@ -566,12 +566,12 @@
         34,
         35,
         10,
-        null,
+        115,
         null,
         null
       ],
-      "total": 79,
-      "efficiency": 13.2
+      "total": 194,
+      "efficiency": 32.3
     }
   ]
 }
