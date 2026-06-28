@@ -21,6 +21,7 @@ CONFIG = {
     "leagueId":   "118055015",
     "numStages":  6,
     "outputPath": "data/suisse-2026.json",
+    "active":     False,
 }
 # ── Critérium du Dauphiné 2026 ──────────────────────────────
 #CONFIG = {
@@ -33,17 +34,28 @@ CONFIG = {
 #}
 
 def update_index(config, output_path):
-    """Add this race to data/index.json (newest first) if not already present."""
+    """Add/update this race in data/index.json (newest first). Sets active flag; deactivates others."""
     index_path = "data/index.json"
     index = []
     if os.path.exists(index_path):
         with open(index_path) as f:
             index = json.load(f)
-    if not any(r["file"] == output_path for r in index):
-        index.insert(0, {"name": config["raceName"], "file": output_path})
-        with open(index_path, "w") as f:
-            json.dump(index, f, indent=2)
-        print(f"Updated {index_path}")
+
+    active = config.get("active", True)
+    if active:
+        for r in index:
+            if r["file"] != output_path:
+                r["active"] = False
+
+    entry = next((r for r in index if r["file"] == output_path), None)
+    if entry is None:
+        index.insert(0, {"name": config["raceName"], "file": output_path, "active": active})
+    else:
+        entry["active"] = active
+
+    with open(index_path, "w") as f:
+        json.dump(index, f, indent=2)
+    print(f"Updated {index_path}")
 
 
 # ── Tour de France 2026 (swap in when ready) ────────────────
@@ -53,7 +65,8 @@ def update_index(config, output_path):
 #     "baseUrl":    "https://www.velogames.com/velogame/2026/",
 #     "leagueId":   "118055015",
 #     "numStages":  22,
-#     "outputPath": "data/data.json",
+#     "outputPath": "data/tdf-2026.json",
+#     "active":     True,
 # }
 
 HEADERS = {
@@ -145,6 +158,10 @@ def parse_rider_profile(html, num_stages):
 
 
 def main():
+    if not CONFIG.get("active", True):
+        print(f"No active race — set CONFIG['active'] = True in scraper.py to enable scraping.")
+        return
+
     n = CONFIG["numStages"]
     stage_labels = [str(i) for i in range(1, n)] + ["Bonus"]
 

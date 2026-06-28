@@ -1,10 +1,12 @@
 [
   {
     "name": "Tour de Suisse 2026",
-    "file": "data/suisse-2026.json"
+    "file": "data/suisse-2026.json",
+    "active": false
   },
   {
-    "name": "Crit\u00e9rium du Dauphin\u00e9 2026",
-    "file": "data/auvergne-2026.json"
+    "name": "Critérium du Dauphiné 2026",
+    "file": "data/auvergne-2026.json",
+    "active": false
   }
 ]
