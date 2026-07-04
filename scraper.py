@@ -13,17 +13,27 @@ from datetime import datetime, timezone
 
 import requests
 
-# ── Tour de Suisse 2026 ──────────────────────────────
+# ── Tour de France 2026 ──────────────────────────────
 CONFIG = {
-    "raceName":   "Tour de Suisse 2026",
-    "leagueUrl":  "https://www.velogames.com/suisse/2026/leaguescores.php?league=118055015",
-    "baseUrl":    "https://www.velogames.com/suisse/2026/",
+    "raceName":   "Tour de France 2026",
+    "leagueUrl":  "https://www.velogames.com/velogame/2026/leaguescores.php?league=118055015",
+    "baseUrl":    "https://www.velogames.com/velogame/2026/",
     "leagueId":   "118055015",
-    "numStages":  6,
-    "outputPath": "data/suisse-2026.json",
-    "active":     False,
+    "numStages":  22,
+    "outputPath": "data/tdf-2026.json",
+    "active":     True,
 }
-# ── Critérium du Dauphiné 2026 ──────────────────────────────
+# ── Tour de Suisse 2026 (complete) ──────────────────────────────
+#CONFIG = {
+#    "raceName":   "Tour de Suisse 2026",
+#    "leagueUrl":  "https://www.velogames.com/suisse/2026/leaguescores.php?league=118055015",
+#    "baseUrl":    "https://www.velogames.com/suisse/2026/",
+#    "leagueId":   "118055015",
+#    "numStages":  6,
+#    "outputPath": "data/suisse-2026.json",
+#    "active":     False,
+#}
+# ── Critérium du Dauphiné 2026 (complete) ──────────────────────────────
 #CONFIG = {
 #    "raceName":   "Critérium du Dauphiné 2026",
 #    "leagueUrl":  "https://www.velogames.com/auvergne/2026/leaguescores.php?league=118055015",
