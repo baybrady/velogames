@@ -149,6 +149,25 @@ def parse_roster(html):
     return riders
 
 
+def parse_riders_page(html):
+    """Returns {rider_id: category} from riders.php (e.g. 'All Rounder', 'Climber')."""
+    if not html:
+        return {}
+    result = {}
+    for tr_m in re.finditer(r'<tr[^>]*>([\s\S]*?)</tr>', html, re.IGNORECASE):
+        tr = tr_m.group(1)
+        ids = re.findall(r'riderprofile\.php\?rider=(\d+)', tr)
+        if not ids:
+            continue
+        rid = ids[0]
+        tds = [re.sub(r'<[^>]+>', '', t.group(1)).strip()
+               for t in re.finditer(r'<td[^>]*>([\s\S]*?)</td>', tr, re.IGNORECASE)]
+        # tds: ['' (image), name, pro_team, category, cost, pct, score]
+        if len(tds) >= 4:
+            result[rid] = tds[3]
+    return result
+
+
 def parse_rider_profile(html, num_stages):
     if not html:
         return [0] * num_stages
@@ -207,6 +226,14 @@ def main():
                 "finished": r["finished"],
             }
 
+    time.sleep(1)
+    print("Fetching rider categories (riders.php)...")
+    riders_html = fetch(CONFIG["baseUrl"] + "riders.php")
+    rider_categories = parse_riders_page(riders_html)
+    print(f"  Got categories for {len(rider_categories)} riders")
+    for rid in rider_meta:
+        rider_meta[rid]["category"] = rider_categories.get(rid, "")
+
     rider_stages = {}
     for rid, meta in rider_meta.items():
         time.sleep(0.5)
@@ -255,6 +282,7 @@ def main():
             "id":         rid,
             "name":       meta["name"],
             "proTeam":    meta["proTeam"],
+            "category":   meta["category"],
             "cost":       cost,
             "finished":   meta["finished"],
             "teamIds":    rider_to_tids.get(rid, []),

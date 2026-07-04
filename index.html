@@ -97,6 +97,8 @@
     th.w-eff    { width: 42px; }
     th.w-team   { width: 170px; }
     th.w-total-s{ width: 60px; }
+    th.w-cat    { width: 120px; }
+    th.w-picks  { width: 44px; }
 
     /* ── Compact mode ─────────────────────────────────────── */
     body.compact { font-size: 11px; }
@@ -113,6 +115,8 @@
     body.compact th.team-hdr  { width: 20px; min-width: 20px; }
     body.compact td.team-cell { width: 20px; min-width: 20px; }
     body.compact .col-proteam { display: none; }
+    body.compact .col-cat     { display: none; }
+    body.compact .col-picks   { display: none; }
 
     /* ── Compact toggle ───────────────────────────────────── */
     .compact-label {
@@ -303,23 +307,19 @@ async function loadRace(file) {
 // ── Riders ─────────────────────────────────────────────────────
 function renderRiders() {
   const n       = D.numStages;
-  // Team columns in alphabetical order (matches color assignment)
   const teamCols = [...D.teams].sort((a, b) => a.name.localeCompare(b.name));
   const T        = teamCols.length;
+  const hasCat   = D.riders.length > 0 && D.riders[0].category !== undefined;
 
   let maxVal = 0;
   for (const r of D.riders)
     for (const v of r.stages)
       if (v != null && v > maxVal) maxVal = v;
 
-  // Column layout:
-  // 0..T-1       : team membership
-  // T            : Rider
-  // T+1          : Pro Team
-  // T+2          : Cost
-  // T+3..T+3+n-1 : stages
-  // T+3+n        : Total
-  // T+3+n+1      : Efficiency
+  // When hasCat: Category (T+2) and Picks (T+4) columns are inserted after Pro Team,
+  // shifting Cost to T+3 and stages to T+5.
+  const iCost    = T + 2 + (hasCat ? 1 : 0);
+  const iStage0  = T + 3 + (hasCat ? 2 : 0);
 
   const teamHdrs = teamCols.map((t, i) =>
     `<th class="team-hdr" data-sort="${i}" data-type="num" style="background:${teamColor[t.tid]}" title="${t.name}">${t.name}</th>`
@@ -327,18 +327,25 @@ function renderRiders() {
 
   const stageHdrs = D.stageLabels.map((lbl, i) => {
     const cls = lbl === 'Bonus' ? 'w-bonus' : 'w-stage';
-    return `<th class="${cls}" data-sort="${T + 3 + i}" data-type="num">${lbl}</th>`;
+    return `<th class="${cls}" data-sort="${iStage0 + i}" data-type="num">${lbl}</th>`;
   }).join('');
+
+  const catHdr   = hasCat
+    ? `<th class="lft w-cat col-cat" data-sort="${T+2}">Category</th>` : '';
+  const picksHdr = hasCat
+    ? `<th class="w-picks col-picks" data-sort="${T+4}" data-type="num">Picks</th>` : '';
 
   let html = `<div class="card"><div class="table-wrap"><table id="t-riders">
     <thead><tr>
       ${teamHdrs}
       <th class="lft w-rider"   data-sort="${T}">Rider</th>
       <th class="lft w-proteam col-proteam" data-sort="${T+1}">Pro Team</th>
-      <th class="w-cost"        data-sort="${T+2}" data-type="num">Cost</th>
+      ${catHdr}
+      <th class="w-cost"        data-sort="${iCost}" data-type="num">Cost</th>
+      ${picksHdr}
       ${stageHdrs}
-      <th class="w-total-r" data-sort="${T+3+n}"   data-type="num">Total</th>
-      <th class="w-eff"     data-sort="${T+3+n+1}" data-type="num">Eff</th>
+      <th class="w-total-r" data-sort="${iStage0+n}"   data-type="num">Total</th>
+      <th class="w-eff"     data-sort="${iStage0+n+1}" data-type="num">Eff</th>
     </tr></thead><tbody>`;
 
   for (const rider of D.riders) {
@@ -358,11 +365,16 @@ function renderRiders() {
       return `<td class="heat" style="background:${bg};${fg}">${v}</td>`;
     }).join('');
 
+    const catCell   = hasCat ? `<td class="lft col-cat">${rider.category || ''}</td>` : '';
+    const picksCell = hasCat ? `<td class="col-picks">${rider.teamIds.length}</td>` : '';
+
     html += `<tr${dnf} data-tids="${rider.teamIds.join(',')}">
       ${teamCells}
       <td class="lft"><a href="${url}" target="_blank">${rider.name}${rider.finished ? '' : ' †'}</a></td>
       <td class="lft col-proteam">${rider.proTeam}</td>
+      ${catCell}
       <td>${rider.cost}</td>
+      ${picksCell}
       ${stageCells}
       <td><strong>${rider.total}</strong></td>
       <td>${rider.efficiency}</td>
