@@ -206,7 +206,17 @@
 <div id="summary" class="panel"></div>
 
 <script>
-const PALETTE = ['#4285f4', '#ea4335', '#fbbc04', '#34a853'];
+// Hues: groups of 3 at (offset, offset+120, offset+240); offsets fill [0,120)
+// via Van der Corput base-2 sequence: 0, 60, 30, 90, 15, 75, 45, 105, …
+function vdc(n) {
+  let r = 0, d = 1;
+  while (n > 0) { d *= 2; r += (n % 2) / d; n = Math.floor(n / 2); }
+  return r;
+}
+function paletteColor(i) {
+  const hue = (vdc(Math.floor(i / 3)) * 120 + (i % 3) * 120) % 360;
+  return `hsl(${Math.round(hue)}, 70%, 45%)`;
+}
 
 let D, teamColor, doneIdx, doneLabels;
 const charts = {};  // keyed chart instances, destroyed on race switch
@@ -272,7 +282,7 @@ async function loadRace(file) {
 
   const alphabetical = [...D.teams].sort((a, b) => a.name.localeCompare(b.name));
   teamColor = {};
-  alphabetical.forEach((t, i) => { teamColor[t.tid] = PALETTE[i % PALETTE.length]; });
+  alphabetical.forEach((t, i) => { teamColor[t.tid] = paletteColor(i); });
 
   doneIdx    = D.stageCompleted.map((v, i) => v ? i : -1).filter(i => i >= 0);
   doneLabels = doneIdx.map(i => D.stageLabels[i]);
