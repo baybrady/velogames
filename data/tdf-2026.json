@@ -31,7 +31,7 @@
   "stageCompleted": [
     true,
     true,
-    false,
+    true,
     false,
     false,
     false,
@@ -52,17 +52,17 @@
     false,
     false
   ],
-  "lastUpdated": "2026-07-06T13:43:20Z",
+  "lastUpdated": "2026-07-06T16:51:35Z",
   "teams": [
     {
       "tid": "681",
       "name": "Team Mumu",
-      "score": 917,
+      "score": 1451,
       "manager": "David Fullagar",
       "stageSums": [
         250,
         667,
-        0,
+        534,
         0,
         0,
         0,
@@ -86,91 +86,37 @@
       "stageCumul": [
         250,
         917,
-        917,
-        917,
-        917,
-        917,
-        917,
-        917,
-        917,
-        917,
-        917,
-        917,
-        917,
-        917,
-        917,
-        917,
-        917,
-        917,
-        917,
-        917,
-        917,
-        917
-      ]
-    },
-    {
-      "tid": "1363",
-      "name": "Billabong Bunyips",
-      "score": 648,
-      "manager": "Cathy",
-      "stageSums": [
-        190,
-        458,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "stageCumul": [
-        190,
-        648,
-        648,
-        648,
-        648,
-        648,
-        648,
-        648,
-        648,
-        648,
-        648,
-        648,
-        648,
-        648,
-        648,
-        648,
-        648,
-        648,
-        648,
-        648,
-        648,
-        648
+        1451,
+        1451,
+        1451,
+        1451,
+        1451,
+        1451,
+        1451,
+        1451,
+        1451,
+        1451,
+        1451,
+        1451,
+        1451,
+        1451,
+        1451,
+        1451,
+        1451,
+        1451,
+        1451,
+        1451
       ]
     },
     {
       "tid": "2856",
       "name": "Tandemonium",
-      "score": 601,
+      "score": 1274,
       "manager": "David P",
       "stageSums": [
         185,
         416,
-        0,
+        673,
         0,
         0,
         0,
@@ -194,37 +140,91 @@
       "stageCumul": [
         185,
         601,
-        601,
-        601,
-        601,
-        601,
-        601,
-        601,
-        601,
-        601,
-        601,
-        601,
-        601,
-        601,
-        601,
-        601,
-        601,
-        601,
-        601,
-        601,
-        601,
-        601
+        1274,
+        1274,
+        1274,
+        1274,
+        1274,
+        1274,
+        1274,
+        1274,
+        1274,
+        1274,
+        1274,
+        1274,
+        1274,
+        1274,
+        1274,
+        1274,
+        1274,
+        1274,
+        1274,
+        1274
+      ]
+    },
+    {
+      "tid": "1363",
+      "name": "Billabong Bunyips",
+      "score": 1067,
+      "manager": "Cathy",
+      "stageSums": [
+        190,
+        458,
+        419,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "stageCumul": [
+        190,
+        648,
+        1067,
+        1067,
+        1067,
+        1067,
+        1067,
+        1067,
+        1067,
+        1067,
+        1067,
+        1067,
+        1067,
+        1067,
+        1067,
+        1067,
+        1067,
+        1067,
+        1067,
+        1067,
+        1067,
+        1067
       ]
     },
     {
       "tid": "93141",
       "name": "Spinzealot",
-      "score": 552,
+      "score": 1058,
       "manager": "Mark",
       "stageSums": [
         185,
         367,
-        0,
+        506,
         0,
         0,
         0,
@@ -248,37 +248,37 @@
       "stageCumul": [
         185,
         552,
-        552,
-        552,
-        552,
-        552,
-        552,
-        552,
-        552,
-        552,
-        552,
-        552,
-        552,
-        552,
-        552,
-        552,
-        552,
-        552,
-        552,
-        552,
-        552,
-        552
+        1058,
+        1058,
+        1058,
+        1058,
+        1058,
+        1058,
+        1058,
+        1058,
+        1058,
+        1058,
+        1058,
+        1058,
+        1058,
+        1058,
+        1058,
+        1058,
+        1058,
+        1058,
+        1058,
+        1058
       ]
     },
     {
       "tid": "109703",
       "name": "Team Paul",
-      "score": 511,
+      "score": 974,
       "manager": "The People of France",
       "stageSums": [
         165,
         346,
-        0,
+        463,
         0,
         0,
         0,
@@ -302,26 +302,26 @@
       "stageCumul": [
         165,
         511,
-        511,
-        511,
-        511,
-        511,
-        511,
-        511,
-        511,
-        511,
-        511,
-        511,
-        511,
-        511,
-        511,
-        511,
-        511,
-        511,
-        511,
-        511,
-        511,
-        511
+        974,
+        974,
+        974,
+        974,
+        974,
+        974,
+        974,
+        974,
+        974,
+        974,
+        974,
+        974,
+        974,
+        974,
+        974,
+        974,
+        974,
+        974,
+        974,
+        974
       ]
     }
   ],
@@ -339,7 +339,7 @@
       "stages": [
         30,
         36,
-        null,
+        24,
         null,
         null,
         null,
@@ -360,8 +360,8 @@
         null,
         null
       ],
-      "total": 66,
-      "efficiency": 8.2
+      "total": 90,
+      "efficiency": 11.2
     },
     {
       "id": "20260390",
@@ -376,7 +376,7 @@
       "stages": [
         0,
         33,
-        null,
+        63,
         null,
         null,
         null,
@@ -397,8 +397,8 @@
         null,
         null
       ],
-      "total": 33,
-      "efficiency": 5.5
+      "total": 96,
+      "efficiency": 16.0
     },
     {
       "id": "20260362",
@@ -413,7 +413,7 @@
       "stages": [
         15,
         0,
-        null,
+        0,
         null,
         null,
         null,
@@ -450,7 +450,7 @@
       "stages": [
         0,
         0,
-        null,
+        2,
         null,
         null,
         null,
@@ -471,8 +471,8 @@
         null,
         null
       ],
-      "total": 0,
-      "efficiency": 0.0
+      "total": 2,
+      "efficiency": 0.2
     },
     {
       "id": "20261251",
@@ -488,7 +488,7 @@
       "stages": [
         30,
         32,
-        null,
+        26,
         null,
         null,
         null,
@@ -509,8 +509,8 @@
         null,
         null
       ],
-      "total": 62,
-      "efficiency": 10.3
+      "total": 88,
+      "efficiency": 14.7
     },
     {
       "id": "20260346",
@@ -525,7 +525,7 @@
       "stages": [
         15,
         0,
-        null,
+        0,
         null,
         null,
         null,
@@ -562,7 +562,7 @@
       "stages": [
         15,
         0,
-        null,
+        0,
         null,
         null,
         null,
@@ -599,7 +599,7 @@
       "stages": [
         40,
         4,
-        null,
+        0,
         null,
         null,
         null,
@@ -637,7 +637,7 @@
       "stages": [
         50,
         8,
-        null,
+        8,
         null,
         null,
         null,
@@ -658,8 +658,8 @@
         null,
         null
       ],
-      "total": 58,
-      "efficiency": 14.5
+      "total": 66,
+      "efficiency": 16.5
     },
     {
       "id": "20261247",
@@ -673,6 +673,7 @@
       ],
       "stages": [
         30,
+        24,
         24,
         null,
         null,
@@ -692,11 +693,10 @@
         null,
         null,
         null,
-        null,
         null
       ],
-      "total": 54,
-      "efficiency": 9.0
+      "total": 78,
+      "efficiency": 13.0
     },
     {
       "id": "20260572",
@@ -711,7 +711,7 @@
       "stages": [
         40,
         4,
-        null,
+        0,
         null,
         null,
         null,
@@ -748,7 +748,7 @@
       "stages": [
         30,
         24,
-        null,
+        24,
         null,
         null,
         null,
@@ -769,8 +769,8 @@
         null,
         null
       ],
-      "total": 54,
-      "efficiency": 9.0
+      "total": 78,
+      "efficiency": 13.0
     },
     {
       "id": "20261246",
@@ -785,7 +785,7 @@
       "stages": [
         30,
         266,
-        null,
+        118,
         null,
         null,
         null,
@@ -806,8 +806,8 @@
         null,
         null
       ],
-      "total": 296,
-      "efficiency": 21.1
+      "total": 414,
+      "efficiency": 29.6
     },
     {
       "id": "20260862",
@@ -821,6 +821,7 @@
       ],
       "stages": [
         20,
+        6,
         6,
         null,
         null,
@@ -840,11 +841,10 @@
         null,
         null,
         null,
-        null,
         null
       ],
-      "total": 26,
-      "efficiency": 3.2
+      "total": 32,
+      "efficiency": 4.0
     },
     {
       "id": "20260017",
@@ -859,7 +859,7 @@
       "stages": [
         10,
         8,
-        null,
+        0,
         null,
         null,
         null,
@@ -896,7 +896,7 @@
       "stages": [
         0,
         0,
-        null,
+        34,
         null,
         null,
         null,
@@ -917,8 +917,8 @@
         null,
         null
       ],
-      "total": 0,
-      "efficiency": 0.0
+      "total": 34,
+      "efficiency": 5.7
     },
     {
       "id": "20261058",
@@ -933,7 +933,7 @@
       "stages": [
         0,
         0,
-        null,
+        0,
         null,
         null,
         null,
@@ -970,7 +970,7 @@
       "stages": [
         0,
         0,
-        null,
+        0,
         null,
         null,
         null,
@@ -1007,7 +1007,7 @@
       "stages": [
         40,
         4,
-        null,
+        0,
         null,
         null,
         null,
@@ -1039,13 +1039,13 @@
       "cost": 10,
       "finished": true,
       "teamIds": [
-        "1363",
-        "2856"
+        "2856",
+        "1363"
       ],
       "stages": [
         25,
         10,
-        null,
+        46,
         null,
         null,
         null,
@@ -1066,8 +1066,8 @@
         null,
         null
       ],
-      "total": 35,
-      "efficiency": 3.5
+      "total": 81,
+      "efficiency": 8.1
     },
     {
       "id": "20261149",
@@ -1081,6 +1081,7 @@
       ],
       "stages": [
         50,
+        8,
         8,
         null,
         null,
@@ -1100,11 +1101,10 @@
         null,
         null,
         null,
-        null,
         null
       ],
-      "total": 58,
-      "efficiency": 5.8
+      "total": 66,
+      "efficiency": 6.6
     },
     {
       "id": "20260366",
@@ -1119,7 +1119,7 @@
       "stages": [
         15,
         0,
-        null,
+        0,
         null,
         null,
         null,
@@ -1156,7 +1156,7 @@
       "stages": [
         25,
         125,
-        null,
+        59,
         null,
         null,
         null,
@@ -1177,8 +1177,8 @@
         null,
         null
       ],
-      "total": 150,
-      "efficiency": 15.0
+      "total": 209,
+      "efficiency": 20.9
     },
     {
       "id": "20260299",
@@ -1193,7 +1193,7 @@
       "stages": [
         0,
         0,
-        null,
+        0,
         null,
         null,
         null,
@@ -1230,7 +1230,7 @@
       "stages": [
         30,
         24,
-        null,
+        24,
         null,
         null,
         null,
@@ -1251,8 +1251,8 @@
         null,
         null
       ],
-      "total": 54,
-      "efficiency": 9.0
+      "total": 78,
+      "efficiency": 13.0
     },
     {
       "id": "20260356",
@@ -1267,7 +1267,7 @@
       "stages": [
         15,
         0,
-        null,
+        0,
         null,
         null,
         null,
@@ -1305,7 +1305,7 @@
       "stages": [
         15,
         85,
-        null,
+        155,
         null,
         null,
         null,
@@ -1326,8 +1326,8 @@
         null,
         null
       ],
-      "total": 100,
-      "efficiency": 5.6
+      "total": 255,
+      "efficiency": 14.2
     },
     {
       "id": "20260392",
@@ -1342,7 +1342,7 @@
       "stages": [
         0,
         32,
-        null,
+        169,
         null,
         null,
         null,
@@ -1363,8 +1363,8 @@
         null,
         null
       ],
-      "total": 32,
-      "efficiency": 4.0
+      "total": 201,
+      "efficiency": 25.1
     },
     {
       "id": "20261153",
@@ -1379,7 +1379,122 @@
       "stages": [
         50,
         8,
+        8,
         null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 66,
+      "efficiency": 11.0
+    },
+    {
+      "id": "20261259",
+      "name": "Tadej Poga\u010dar",
+      "proTeam": "UAE Team Emirates - XRG",
+      "category": "All Rounder",
+      "cost": 34,
+      "finished": true,
+      "teamIds": [
+        "681",
+        "2856",
+        "1363",
+        "93141",
+        "109703"
+      ],
+      "stages": [
+        30,
+        229,
+        270,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 529,
+      "efficiency": 15.6
+    },
+    {
+      "id": "20260846",
+      "name": "Thomas Pidcock",
+      "proTeam": "Pinarello-Q36.5 Pro Cycling Team",
+      "category": "Unclassed",
+      "cost": 10,
+      "finished": true,
+      "teamIds": [
+        "1363"
+      ],
+      "stages": [
+        0,
+        71,
+        30,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 101,
+      "efficiency": 10.1
+    },
+    {
+      "id": "20260567",
+      "name": "Thymen Arensman",
+      "proTeam": "Netcompany INEOS",
+      "category": "All Rounder",
+      "cost": 8,
+      "finished": true,
+      "teamIds": [
+        "2856"
+      ],
+      "stages": [
+        40,
+        5,
+        13,
         null,
         null,
         null,
@@ -1401,122 +1516,7 @@
         null
       ],
       "total": 58,
-      "efficiency": 9.7
-    },
-    {
-      "id": "20261259",
-      "name": "Tadej Poga\u010dar",
-      "proTeam": "UAE Team Emirates - XRG",
-      "category": "All Rounder",
-      "cost": 34,
-      "finished": true,
-      "teamIds": [
-        "681",
-        "1363",
-        "2856",
-        "93141",
-        "109703"
-      ],
-      "stages": [
-        30,
-        229,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "total": 259,
-      "efficiency": 7.6
-    },
-    {
-      "id": "20260846",
-      "name": "Thomas Pidcock",
-      "proTeam": "Pinarello-Q36.5 Pro Cycling Team",
-      "category": "Unclassed",
-      "cost": 10,
-      "finished": true,
-      "teamIds": [
-        "1363"
-      ],
-      "stages": [
-        0,
-        71,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "total": 71,
-      "efficiency": 7.1
-    },
-    {
-      "id": "20260567",
-      "name": "Thymen Arensman",
-      "proTeam": "Netcompany INEOS",
-      "category": "All Rounder",
-      "cost": 8,
-      "finished": true,
-      "teamIds": [
-        "2856"
-      ],
-      "stages": [
-        40,
-        5,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "total": 45,
-      "efficiency": 5.6
+      "efficiency": 7.2
     },
     {
       "id": "20260343",
@@ -1531,7 +1531,7 @@
       "stages": [
         15,
         0,
-        null,
+        12,
         null,
         null,
         null,
@@ -1552,8 +1552,8 @@
         null,
         null
       ],
-      "total": 15,
-      "efficiency": 2.5
+      "total": 27,
+      "efficiency": 4.5
     },
     {
       "id": "20260943",
@@ -1563,13 +1563,13 @@
       "cost": 12,
       "finished": true,
       "teamIds": [
-        "1363",
-        "2856"
+        "2856",
+        "1363"
       ],
       "stages": [
         0,
         5,
-        null,
+        0,
         null,
         null,
         null,
@@ -1606,7 +1606,7 @@
       "stages": [
         30,
         24,
-        null,
+        24,
         null,
         null,
         null,
@@ -1627,8 +1627,8 @@
         null,
         null
       ],
-      "total": 54,
-      "efficiency": 9.0
+      "total": 78,
+      "efficiency": 13.0
     },
     {
       "id": "20261327",
@@ -1643,7 +1643,7 @@
       "stages": [
         0,
         123,
-        null,
+        133,
         null,
         null,
         null,
@@ -1664,8 +1664,8 @@
         null,
         null
       ],
-      "total": 123,
-      "efficiency": 12.3
+      "total": 256,
+      "efficiency": 25.6
     }
   ]
 }
