@@ -194,6 +194,7 @@
   <select id="race-picker" class="race-picker"></select>
   <button class="tab active" data-tab="riders">Riders</button>
   <button class="tab" data-tab="summary">Summary</button>
+  <button class="tab" data-tab="logs">Logs</button>
   <label id="compact-toggle" class="compact-label">
     Compact
     <span class="toggle-track"><span class="toggle-knob"></span></span>
@@ -204,6 +205,7 @@
 
 <div id="riders"  class="panel active"></div>
 <div id="summary" class="panel"></div>
+<div id="logs"    class="panel"></div>
 
 <script>
 // Hues: groups of 3 at (offset, offset+120, offset+240); offsets fill [0,120)
@@ -231,6 +233,9 @@ async function init() {
       '<p style="padding:40px;color:#ef4444">Could not load data/index.json — run scraper.py first, then serve with: <code>python3 -m http.server</code></p>';
     return;
   }
+
+  const logData = await fetch('data/log.json').then(r => r.ok ? r.json() : []).catch(() => []);
+  renderLogs(logData);
 
   // Populate race picker
   const picker = document.getElementById('race-picker');
@@ -486,6 +491,45 @@ function renderSummary() {
       },
     },
   });
+}
+
+// ── Logs ───────────────────────────────────────────────────────
+function renderLogs(entries) {
+  const el = document.getElementById('logs');
+  if (!entries || !entries.length) {
+    el.innerHTML = '<div class="card" style="padding:16px;color:var(--muted);font-size:12px">No log entries yet.</div>';
+    return;
+  }
+
+  const fmtTs = iso => {
+    const d = new Date(iso);
+    const offsetStr = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'Australia/Adelaide', timeZoneName: 'shortOffset',
+    }).formatToParts(d).find(p => p.type === 'timeZoneName')?.value ?? '';
+    const abbr = offsetStr === 'GMT+9:30' ? 'ACST' : 'ACDT';
+    return d.toLocaleString('en-AU', {
+      timeZone: 'Australia/Adelaide', weekday: 'short',
+      day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit',
+    }) + ' ' + abbr;
+  };
+
+  let html = '<div class="card"><div class="table-wrap"><table>'
+           + '<thead><tr>'
+           + '<th style="width:210px">Time (Adelaide)</th>'
+           + '<th style="width:190px">Race</th>'
+           + '<th>Changes</th>'
+           + '</tr></thead><tbody>';
+
+  for (const e of entries) {
+    html += `<tr>
+      <td style="white-space:nowrap;color:var(--muted)">${fmtTs(e.ts)}</td>
+      <td>${e.race}</td>
+      <td>${e.changes.join(' · ')}</td>
+    </tr>`;
+  }
+
+  html += '</tbody></table></div></div>';
+  el.innerHTML = html;
 }
 
 // ── Sortable ───────────────────────────────────────────────────

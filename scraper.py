@@ -186,6 +186,79 @@ def parse_rider_profile(html, num_stages):
     return stages
 
 
+def load_json(path):
+    if not os.path.exists(path):
+        return None
+    try:
+        with open(path) as f:
+            return json.load(f)
+    except Exception:
+        return None
+
+
+def scores_changed(new_teams, output_path):
+    """Return True if any team score differs from the cached output JSON (or no cache exists)."""
+    old = load_json(output_path)
+    if old is None:
+        return True
+    cached  = {t["tid"]: t["score"] for t in old.get("teams", [])}
+    current = {t["tid"]: t["score"] for t in new_teams}
+    return cached != current
+
+
+def diff_data(old, new):
+    """Return list of human-readable change strings between old and new race data."""
+    if old is None:
+        return [f"Initial scrape — {len(new.get('riders', []))} riders"]
+
+    changes  = []
+    old_comp = old.get("stageCompleted", [])
+    new_comp = new.get("stageCompleted", [])
+    labels   = new.get("stageLabels", [])
+
+    newly_done = [
+        labels[i] if i < len(labels) else str(i + 1)
+        for i, (o, c) in enumerate(zip(old_comp, new_comp))
+        if not o and c
+    ]
+    if newly_done:
+        s = "s" if len(newly_done) > 1 else ""
+        changes.append(f"Stage{s} {', '.join(newly_done)} completed")
+
+    old_riders  = {r["id"]: r for r in old.get("riders", [])}
+    score_diffs = 0
+    dnf_new     = []
+    for nr in new.get("riders", []):
+        rid = nr["id"]
+        or_ = old_riders.get(rid)
+        if or_ is None:
+            continue
+        if not nr["finished"] and or_.get("finished", True):
+            dnf_new.append(nr["name"])
+        for i, (os, ns) in enumerate(zip(or_.get("stages", []), nr.get("stages", []))):
+            if (i < len(old_comp) and old_comp[i]
+                    and os is not None and ns is not None and os != ns):
+                score_diffs += 1
+
+    if score_diffs:
+        s = "s" if score_diffs != 1 else ""
+        changes.append(f"{score_diffs} score{s} updated")
+    for name in dnf_new:
+        changes.append(f"{name} abandoned")
+
+    return changes
+
+
+def append_log(race_name, changes, ts):
+    log_path = "data/log.json"
+    entries  = load_json(log_path) or []
+    entries.insert(0, {"ts": ts, "race": race_name, "changes": changes})
+    entries  = entries[:500]
+    with open(log_path, "w") as f:
+        json.dump(entries, f, indent=2)
+    print(f"Updated {log_path}")
+
+
 def main():
     if not CONFIG.get("active", True):
         print(f"No active race — set CONFIG['active'] = True in scraper.py to enable scraping.")
@@ -204,6 +277,12 @@ def main():
     print(f"Found {len(teams)} teams: {[t['name'] for t in teams]}")
     if not teams:
         return
+
+    if not scores_changed(teams, CONFIG["outputPath"]):
+        print("Team scores unchanged — skipping full scrape.")
+        return
+
+    old_data = load_json(CONFIG["outputPath"])
 
     rider_meta   = {}
     team_rosters = {}
@@ -313,15 +392,23 @@ def main():
         "numStages":      n,
         "stageLabels":    stage_labels,
         "stageCompleted": stage_completed,
-        "lastUpdated":    datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "teams":          teams_sorted,
         "riders":         riders_out,
     }
+
+    changes = diff_data(old_data, output)
+    if old_data is not None and not changes:
+        print("Full scrape matched cached data — no write needed.")
+        return
+
+    ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    output["lastUpdated"] = ts
 
     os.makedirs(os.path.dirname(CONFIG["outputPath"]) or ".", exist_ok=True)
     with open(CONFIG["outputPath"], "w") as f:
         json.dump(output, f, indent=2)
     print(f"\nWrote {CONFIG['outputPath']}")
+    append_log(CONFIG["raceName"], changes, ts)
     update_index(CONFIG, CONFIG["outputPath"])
 
 
