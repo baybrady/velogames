@@ -65,8 +65,8 @@
     th.lft { text-align: left; }
     th[data-sort] { cursor: pointer; }
     th[data-sort]:hover { background: #2d3f55; }
-    th.sort-asc::after  { content: ' ▲'; color: var(--accent); font-size: 9px; }
-    th.sort-desc::after { content: ' ▼'; color: var(--accent); font-size: 9px; }
+    th.sort-asc:not(.team-hdr)::after  { content: ' ▲'; color: var(--accent); font-size: 9px; }
+    th.sort-desc:not(.team-hdr)::after { content: ' ▼'; color: var(--accent); font-size: 9px; }
 
     td {
       padding: 4px 8px;
@@ -78,12 +78,20 @@
     tr:hover td { background: var(--row-hover); }
 
     /* ── Team-header columns (rotated) ───────────────────── */
+    /* Rotation lives on an inner span, not the th itself: Safari mis-paints
+       the background and drops space for ::after content when writing-mode
+       and transform are combined directly on a table cell. */
     th.team-hdr {
-      writing-mode: vertical-rl; transform: rotate(180deg);
       width: 28px; min-width: 28px;
       font-size: 11px; padding: 10px 6px; text-align: left; cursor: pointer;
     }
     th.team-hdr:hover { background: #2d3f55; }
+    .team-hdr-text {
+      display: inline-block;
+      writing-mode: vertical-rl; transform: rotate(180deg);
+    }
+    th.team-hdr.sort-asc  .team-hdr-text::after { content: ' ▲'; color: var(--accent); font-size: 9px; }
+    th.team-hdr.sort-desc .team-hdr-text::after { content: ' ▼'; color: var(--accent); font-size: 9px; }
     td.team-cell { width: 28px; min-width: 28px; text-align: center; font-size: 11px; padding: 4px 0; }
 
     /* ── Fixed-width columns (overridden in compact mode) ─── */
@@ -337,7 +345,7 @@ function renderRiders() {
   const iStage0  = T + 3 + (hasCat ? 2 : 0);
 
   const teamHdrs = teamCols.map((t, i) =>
-    `<th class="team-hdr" data-sort="${i}" data-type="num" style="background:${teamColor[t.tid]}" title="${t.name}">${t.name}</th>`
+    `<th class="team-hdr" data-sort="${i}" data-type="num" style="background:${teamColor[t.tid]}" title="${t.name}"><span class="team-hdr-text">${t.name}</span></th>`
   ).join('');
 
   const stageHdrs = D.stageLabels.map((lbl, i) => {
