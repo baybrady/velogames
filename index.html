@@ -503,26 +503,31 @@ function renderLogs(entries) {
 
   const fmtTs = iso => {
     const d = new Date(iso);
+    const fmt = tz => d.toLocaleString('en-US', {
+      timeZone: tz, weekday: 'short', day: 'numeric', month: 'short',
+      hour: 'numeric', minute: '2-digit', timeZoneName: 'short',
+    });
     const offsetStr = new Intl.DateTimeFormat('en-US', {
       timeZone: 'Australia/Adelaide', timeZoneName: 'shortOffset',
     }).formatToParts(d).find(p => p.type === 'timeZoneName')?.value ?? '';
     const abbr = offsetStr === 'GMT+9:30' ? 'ACST' : 'ACDT';
-    return d.toLocaleString('en-AU', {
+    const adl = d.toLocaleString('en-AU', {
       timeZone: 'Australia/Adelaide', weekday: 'short',
       day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit',
-    }) + ' ' + abbr;
+    }) + ' ' + abbr;
+    return `${fmt('America/New_York')}<br>${fmt('America/Los_Angeles')}<br>${adl}`;
   };
 
   let html = '<div class="card"><div class="table-wrap"><table>'
            + '<thead><tr>'
-           + '<th style="width:210px">Time (Adelaide)</th>'
+           + '<th style="width:240px">Time</th>'
            + '<th style="width:190px">Race</th>'
            + '<th>Changes</th>'
            + '</tr></thead><tbody>';
 
   for (const e of entries) {
     html += `<tr>
-      <td style="white-space:nowrap;color:var(--muted)">${fmtTs(e.ts)}</td>
+      <td style="white-space:nowrap;color:var(--muted);line-height:1.6">${fmtTs(e.ts)}</td>
       <td>${e.race}</td>
       <td>${e.changes.join(' · ')}</td>
     </tr>`;
