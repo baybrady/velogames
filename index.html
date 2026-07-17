@@ -180,6 +180,8 @@
     @media (max-width: 900px) { .charts-grid { grid-template-columns: 1fr; } }
     .chart-card { padding: 20px; }
     .chart-card h3 { font-size: 11px; font-weight: 700; color: var(--muted); margin-bottom: 14px; text-transform: uppercase; letter-spacing: .06em; }
+    .chart-card .chart-wrap { position: relative; height: 320px; }
+    @media (max-width: 900px) { .chart-card .chart-wrap { height: 280px; } }
 
     /* ── Race picker ──────────────────────────────────────── */
     .race-picker {
@@ -371,7 +373,20 @@ function renderRiders() {
       <th class="w-eff"     data-sort="${iStage0+n+1}" data-type="num">Eff</th>
     </tr></thead><tbody>`;
 
-  for (const rider of D.riders) {
+  // Default order: as if sorted by last team (highest priority), then the
+  // team before it, ... down to the first team — a convenient way to see
+  // each team's picks at a glance. Achieved via successive stable sorts
+  // from lowest to highest priority key, ending on the last team column.
+  const riderRows = [...D.riders].sort((a, b) => a.name.localeCompare(b.name));
+  teamCols.forEach(t => {
+    riderRows.sort((a, b) => {
+      const ap = a.teamIds.includes(t.tid) ? 1 : 0;
+      const bp = b.teamIds.includes(t.tid) ? 1 : 0;
+      return bp - ap;
+    });
+  });
+
+  for (const rider of riderRows) {
     const url = D.baseUrl + 'riderprofile.php?rider=' + rider.id;
     const dnf = rider.finished ? '' : ' class="dnf"';
 
@@ -406,7 +421,7 @@ function renderRiders() {
 
   html += '</tbody></table></div></div>';
   document.getElementById('riders').innerHTML = html;
-  sortable('t-riders', T, true);
+  sortable('t-riders', null, true);
 }
 
 // ── Summary (Daily + Cumulative + Charts) ──────────────────────
@@ -460,8 +475,8 @@ function renderSummary() {
       </tbody>
     </table></div></div>
     <div class="charts-grid">
-      <div class="card chart-card"><h3>Daily Stage Points</h3><canvas id="c-daily"></canvas></div>
-      <div class="card chart-card"><h3>Cumulative Points</h3><canvas id="c-cumul"></canvas></div>
+      <div class="card chart-card"><h3>Daily Stage Points</h3><div class="chart-wrap"><canvas id="c-daily"></canvas></div></div>
+      <div class="card chart-card"><h3>Cumulative Points</h3><div class="chart-wrap"><canvas id="c-cumul"></canvas></div></div>
     </div>`;
 
   document.getElementById('summary').innerHTML = html;
@@ -479,6 +494,7 @@ function renderSummary() {
     data: { labels: doneLabels, datasets: mkDatasets('stageSums') },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: { legend: { position: 'bottom' } },
       scales: {
         x: { title: { display: true, text: 'Stage' } },
@@ -492,6 +508,7 @@ function renderSummary() {
     data: { labels: doneLabels, datasets: mkDatasets('stageCumul') },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: { legend: { position: 'bottom' } },
       scales: {
         x: { title: { display: true, text: 'Stage' } },

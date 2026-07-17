@@ -225,9 +225,9 @@ def diff_data(old, new):
         s = "s" if len(newly_done) > 1 else ""
         changes.append(f"Stage{s} {', '.join(newly_done)} completed")
 
-    old_riders  = {r["id"]: r for r in old.get("riders", [])}
-    score_diffs = 0
-    dnf_new     = []
+    old_riders   = {r["id"]: r for r in old.get("riders", [])}
+    score_diffs  = []
+    dnf_new      = []
     for nr in new.get("riders", []):
         rid = nr["id"]
         or_ = old_riders.get(rid)
@@ -238,11 +238,12 @@ def diff_data(old, new):
         for i, (os, ns) in enumerate(zip(or_.get("stages", []), nr.get("stages", []))):
             if (i < len(old_comp) and old_comp[i]
                     and os is not None and ns is not None and os != ns):
-                score_diffs += 1
+                stage_label = labels[i] if i < len(labels) else str(i + 1)
+                score_diffs.append(f"{nr['name']} stage {stage_label}: {os} → {ns}")
 
     if score_diffs:
-        s = "s" if score_diffs != 1 else ""
-        changes.append(f"{score_diffs} score{s} updated")
+        s = "s" if len(score_diffs) != 1 else ""
+        changes.append(f"{len(score_diffs)} score{s} updated — " + "; ".join(score_diffs))
     for name in dnf_new:
         changes.append(f"{name} abandoned")
 
