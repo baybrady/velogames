@@ -104,7 +104,6 @@
     th.w-total-r{ width: 52px; }
     th.w-eff    { width: 42px; }
     th.w-team   { width: 170px; }
-    th.w-total-s{ width: 60px; }
     th.w-cat    { width: 120px; }
     th.w-picks  { width: 44px; }
 
@@ -119,7 +118,6 @@
     body.compact th.w-total-r { width: 44px; }
     body.compact th.w-eff     { width: 32px; }
     body.compact th.w-team    { width: 150px; }
-    body.compact th.w-total-s { width: 50px; }
     body.compact th.team-hdr  { width: 20px; min-width: 20px; }
     body.compact td.team-cell { width: 20px; min-width: 20px; }
     body.compact .col-proteam { display: none; }
@@ -423,7 +421,7 @@ function renderRiders() {
 
 // ── Summary (Daily + Cumulative + Charts) ──────────────────────
 function renderSummary() {
-  const colSpan = 2 + doneIdx.length; // Team + stages + Total
+  const colSpan = 1 + doneIdx.length; // Team + stages
 
   // Teams in alphabetical order (consistent with Riders tab and chart colors)
   const sorted = [...D.teams].sort((a, b) => a.name.localeCompare(b.name));
@@ -446,11 +444,9 @@ function renderSummary() {
         const win = v === maxes[ci];
         return `<td${win ? ' class="winner"' : ''}>${v.toLocaleString()}</td>`;
       }).join('');
-      const total = t[field][doneIdx.at(-1)] ?? 0;
       return `<tr>
         <td class="lft">${dot}<a href="${url}" target="_blank">${t.name}</a></td>
         ${cells}
-        <td><strong>${total.toLocaleString()}</strong></td>
       </tr>`;
     }).join('');
   }
@@ -460,7 +456,6 @@ function renderSummary() {
       <thead><tr>
         <th class="lft w-team">Team</th>
         ${stageHdrs}
-        <th class="w-total-s">Total</th>
       </tr></thead>
       <tbody>
         <tr class="section-hdr"><td colspan="${colSpan}">Daily</td></tr>
@@ -478,12 +473,12 @@ function renderSummary() {
 
   document.getElementById('summary').innerHTML = html;
 
-  const mkDatasets = field => sorted.map(t => ({
+  const mkDatasets = (field, pointRadius = 4) => sorted.map(t => ({
     label:           t.name,
     data:            doneIdx.map(i => t[field][i] ?? 0),
     backgroundColor: teamColor[t.tid],
     borderColor:     teamColor[t.tid],
-    borderWidth: 2, tension: 0.3, pointRadius: 4, fill: false,
+    borderWidth: 2, tension: 0.3, pointRadius, fill: false,
   }));
 
   charts.daily = new Chart(document.getElementById('c-daily'), {
@@ -502,7 +497,7 @@ function renderSummary() {
 
   charts.cumul = new Chart(document.getElementById('c-cumul'), {
     type: 'line',
-    data: { labels: doneLabels, datasets: mkDatasets('stageCumul') },
+    data: { labels: doneLabels, datasets: mkDatasets('stageCumul', 2) },
     options: {
       responsive: true,
       maintainAspectRatio: false,
