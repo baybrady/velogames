@@ -13,16 +13,26 @@ from datetime import datetime, timezone
 
 import requests
 
-# ── Tour de France 2026 ──────────────────────────────
+# ── Tour de France Femmes 2026 ──────────────────────────────
 CONFIG = {
-    "raceName":   "Tour de France 2026",
-    "leagueUrl":  "https://www.velogames.com/velogame/2026/leaguescores.php?league=118055015",
-    "baseUrl":    "https://www.velogames.com/velogame/2026/",
+    "raceName":   "Tour de France Femmes 2026",
+    "leagueUrl":  "https://www.velogames.com/velogame-femmes/2026/leaguescores.php?league=118055015",
+    "baseUrl":    "https://www.velogames.com/velogame-femmes/2026/",
     "leagueId":   "118055015",
-    "numStages":  22,
-    "outputPath": "data/tdf-2026.json",
+    "numStages":  9,
+    "outputPath": "data/tdf-femmes-2026.json",
     "active":     True,
 }
+# ── Tour de France 2026 (complete) ──────────────────────────────
+#CONFIG = {
+#    "raceName":   "Tour de France 2026",
+#    "leagueUrl":  "https://www.velogames.com/velogame/2026/leaguescores.php?league=118055015",
+#    "baseUrl":    "https://www.velogames.com/velogame/2026/",
+#    "leagueId":   "118055015",
+#    "numStages":  22,
+#    "outputPath": "data/tdf-2026.json",
+#    "active":     False,
+#}
 # ── Tour de Suisse 2026 (complete) ──────────────────────────────
 #CONFIG = {
 #    "raceName":   "Tour de Suisse 2026",
@@ -67,17 +77,6 @@ def update_index(config, output_path):
         json.dump(index, f, indent=2)
     print(f"Updated {index_path}")
 
-
-# ── Tour de France 2026 (swap in when ready) ────────────────
-# CONFIG = {
-#     "raceName":   "Tour de France 2026",
-#     "leagueUrl":  "https://www.velogames.com/velogame/2026/leaguescores.php?league=118055015",
-#     "baseUrl":    "https://www.velogames.com/velogame/2026/",
-#     "leagueId":   "118055015",
-#     "numStages":  22,
-#     "outputPath": "data/tdf-2026.json",
-#     "active":     True,
-# }
 
 HEADERS = {
     "User-Agent":      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15",
