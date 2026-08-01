@@ -1,0 +1,826 @@
+{
+  "raceName": "Tour de France Femmes 2026",
+  "leagueId": "118055015",
+  "leagueUrl": "https://www.velogames.com/velogame-femmes/2026/leaguescores.php?league=118055015",
+  "baseUrl": "https://www.velogames.com/velogame-femmes/2026/",
+  "numStages": 9,
+  "stageLabels": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "Bonus"
+  ],
+  "stageCompleted": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "teams": [
+    {
+      "tid": "1363",
+      "name": "Billabong Bunyips",
+      "score": 0,
+      "manager": "Cathy",
+      "stageSums": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "stageCumul": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "tid": "681",
+      "name": "Team Mumu",
+      "score": 0,
+      "manager": "David",
+      "stageSums": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "stageCumul": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "tid": "2856",
+      "name": "Tandemonium",
+      "score": 0,
+      "manager": "David P",
+      "stageSums": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "stageCumul": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "tid": "93141",
+      "name": "Spinzealot",
+      "score": 0,
+      "manager": "Mark",
+      "stageSums": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "stageCumul": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "riders": [
+    {
+      "id": "20265121",
+      "name": "Amber Kraak",
+      "proTeam": "FDJ United - SUEZ",
+      "category": "6",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [
+        "1363",
+        "2856"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265439",
+      "name": "Anna Van Der Breggen",
+      "proTeam": "Team SD Worx - Protime",
+      "category": "14",
+      "cost": 14,
+      "finished": true,
+      "teamIds": [
+        "1363"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265135",
+      "name": "Charlotte Kool",
+      "proTeam": "Fenix-Premier Tech",
+      "category": "8",
+      "cost": 8,
+      "finished": true,
+      "teamIds": [
+        "2856"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265126",
+      "name": "Demi Vollering",
+      "proTeam": "FDJ United - SUEZ",
+      "category": "28",
+      "cost": 28,
+      "finished": true,
+      "teamIds": [
+        "1363",
+        "93141"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265400",
+      "name": "Heidi Franz",
+      "proTeam": "St Michel - Preference Home - Auber93",
+      "category": "4",
+      "cost": 4,
+      "finished": true,
+      "teamIds": [
+        "681"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265088",
+      "name": "Henrietta Christie",
+      "proTeam": "EF Education-Oatly",
+      "category": "4",
+      "cost": 4,
+      "finished": true,
+      "teamIds": [
+        "681",
+        "93141"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265478",
+      "name": "Katrine Aalerud",
+      "proTeam": "Uno-X Mobility",
+      "category": "8",
+      "cost": 8,
+      "finished": true,
+      "teamIds": [
+        "2856"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265010",
+      "name": "Kimberley Le Court-Pienaar",
+      "proTeam": "AG Insurance - Soudal Team",
+      "category": "12",
+      "cost": 12,
+      "finished": true,
+      "teamIds": [
+        "681"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265091",
+      "name": "Kristen Faulkner",
+      "proTeam": "EF Education-Oatly",
+      "category": "8",
+      "cost": 8,
+      "finished": true,
+      "teamIds": [
+        "1363",
+        "93141"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265245",
+      "name": "Loes Adegeest",
+      "proTeam": "Lidl - Trek",
+      "category": "6",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [
+        "93141"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265442",
+      "name": "Lorena Wiebes",
+      "proTeam": "Team SD Worx - Protime",
+      "category": "16",
+      "cost": 16,
+      "finished": true,
+      "teamIds": [
+        "681",
+        "2856",
+        "93141"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265433",
+      "name": "Lotte Kopecky",
+      "proTeam": "Team SD Worx - Protime",
+      "category": "10",
+      "cost": 10,
+      "finished": true,
+      "teamIds": [
+        "1363"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265248",
+      "name": "Lucinda Brand",
+      "proTeam": "Lidl - Trek",
+      "category": "6",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [
+        "93141"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265456",
+      "name": "Marianne Vos",
+      "proTeam": "Team Visma | Lease a Bike",
+      "category": "14",
+      "cost": 14,
+      "finished": true,
+      "teamIds": [
+        "1363"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265350",
+      "name": "Marlen Reusser",
+      "proTeam": "Movistar Team",
+      "category": "14",
+      "cost": 14,
+      "finished": true,
+      "teamIds": [
+        "2856"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265462",
+      "name": "Mavi Garc\u00eda",
+      "proTeam": "UAE Team ADQ",
+      "category": "8",
+      "cost": 8,
+      "finished": true,
+      "teamIds": [
+        "1363"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265230",
+      "name": "Naia Amondarain",
+      "proTeam": "Laboral Kutxa - Fundaci\u00f3n Euskadi",
+      "category": "4",
+      "cost": 4,
+      "finished": true,
+      "teamIds": [
+        "93141"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265250",
+      "name": "Niamh Fisher-Black",
+      "proTeam": "Lidl - Trek",
+      "category": "12",
+      "cost": 12,
+      "finished": true,
+      "teamIds": [
+        "2856"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265097",
+      "name": "Noemi R\u00fcegg",
+      "proTeam": "EF Education-Oatly",
+      "category": "8",
+      "cost": 8,
+      "finished": true,
+      "teamIds": [
+        "2856"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265460",
+      "name": "Paula Blasi",
+      "proTeam": "UAE Team ADQ",
+      "category": "20",
+      "cost": 20,
+      "finished": true,
+      "teamIds": [
+        "681",
+        "2856"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265446",
+      "name": "Pauline Ferrand-Pr\u00e9vot",
+      "proTeam": "Team Visma | Lease a Bike",
+      "category": "20",
+      "cost": 20,
+      "finished": true,
+      "teamIds": [
+        "681",
+        "93141"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265415",
+      "name": "Pfeiffer Georgi",
+      "proTeam": "Team Picnic PostNL",
+      "category": "6",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [
+        "1363"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265138",
+      "name": "Puck Pieterse",
+      "proTeam": "Fenix-Premier Tech",
+      "category": "12",
+      "cost": 12,
+      "finished": true,
+      "teamIds": [
+        "681"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265256",
+      "name": "Riejanne Markus",
+      "proTeam": "Lidl - Trek",
+      "category": "8",
+      "cost": 8,
+      "finished": true,
+      "teamIds": [
+        "93141"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265061",
+      "name": "Rosa Maria Kl\u00f6ser",
+      "proTeam": "CANYON//SRAM zondacrypto",
+      "category": "4",
+      "cost": 4,
+      "finished": true,
+      "teamIds": [
+        "681"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265272",
+      "name": "Ruby Roseman-Gannon",
+      "proTeam": "Liv AlUla Jayco",
+      "category": "6",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [
+        "1363"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265453",
+      "name": "Sarah Van Dam",
+      "proTeam": "Team Visma | Lease a Bike",
+      "category": "8",
+      "cost": 8,
+      "finished": true,
+      "teamIds": [
+        "2856"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    },
+    {
+      "id": "20265056",
+      "name": "Zoe B\u00e4ckstedt",
+      "proTeam": "CANYON//SRAM zondacrypto",
+      "category": "8",
+      "cost": 8,
+      "finished": true,
+      "teamIds": [
+        "681"
+      ],
+      "stages": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "total": 0,
+      "efficiency": 0.0
+    }
+  ],
+  "lastUpdated": "2026-08-01T16:14:31Z"
+}

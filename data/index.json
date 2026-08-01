@@ -1,8 +1,13 @@
 [
   {
+    "name": "Tour de France Femmes 2026",
+    "file": "data/tdf-femmes-2026.json",
+    "active": true
+  },
+  {
     "name": "Tour de France 2026",
     "file": "data/tdf-2026.json",
-    "active": true
+    "active": false
   },
   {
     "name": "Tour de Suisse 2026",
