@@ -85,7 +85,19 @@ HEADERS = {
 }
 
 
+LAST_FETCH_ERROR = None
+
+
+def _error_label(e):
+    if isinstance(e, requests.exceptions.Timeout):
+        return "Timeout"
+    if isinstance(e, requests.exceptions.ConnectionError):
+        return "Connection error"
+    return type(e).__name__
+
+
 def fetch(url, attempt=1):
+    global LAST_FETCH_ERROR
     try:
         r = requests.get(url, headers=HEADERS, timeout=15)
         if r.status_code != 200:
@@ -93,13 +105,16 @@ def fetch(url, attempt=1):
             if attempt < 3:
                 time.sleep(3 * attempt)
                 return fetch(url, attempt + 1)
+            LAST_FETCH_ERROR = f"HTTP {r.status_code}"
             return None
+        LAST_FETCH_ERROR = None
         return r.text
     except Exception as e:
         print(f"  Error (attempt {attempt}) — {url}: {e}")
         if attempt < 3:
             time.sleep(3 * attempt)
             return fetch(url, attempt + 1)
+        LAST_FETCH_ERROR = _error_label(e)
         return None
 
 
@@ -270,12 +285,17 @@ def main():
     print(f"Fetching league: {CONFIG['leagueUrl']}")
     html = fetch(CONFIG["leagueUrl"])
     if not html:
-        print("Failed to fetch league page")
+        err = LAST_FETCH_ERROR or "unknown error"
+        print(f"Failed to fetch league page ({err})")
+        append_log(CONFIG["raceName"], [f"Scrape failed — {err} fetching league page"],
+                   datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
         return
 
     teams = parse_league(html)
     print(f"Found {len(teams)} teams: {[t['name'] for t in teams]}")
     if not teams:
+        append_log(CONFIG["raceName"], ["Scrape failed — 0 teams parsed from league page"],
+                   datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
         return
 
     if not scores_changed(teams, CONFIG["outputPath"]):
@@ -294,7 +314,10 @@ def main():
         html = fetch(url)
         riders = parse_roster(html)
         if not riders:
-            print(f"  WARNING: 0 riders for {team['name']} — aborting")
+            err = LAST_FETCH_ERROR if html is None else "0 riders parsed (roster may be hidden pre-race)"
+            print(f"  WARNING: {err} for {team['name']} — aborting")
+            append_log(CONFIG["raceName"], [f"Scrape aborted — {err} fetching roster for {team['name']}"],
+                       datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
             return
         team_rosters[team["tid"]] = [r["id"] for r in riders]
         for r in riders:
