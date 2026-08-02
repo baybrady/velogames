@@ -1,58 +1,66 @@
 [
   {
+    "ts": "2026-08-02T21:00:25Z",
+    "race": "Tour de France Femmes 2026",
+    "changes": [
+      "Stage 2 completed",
+      "1 score updated — Marlen Reusser stage 1: 41 → 0"
+    ]
+  },
+  {
     "ts": "2026-08-02T20:52:22Z",
     "race": "Tour de France Femmes 2026",
     "changes": [
-      "Scrape failed \u2014 HTTP 403 fetching league page"
+      "Scrape failed — HTTP 403 fetching league page"
     ]
   },
   {
     "ts": "2026-08-02T19:42:27Z",
     "race": "Tour de France Femmes 2026",
     "changes": [
-      "Scrape failed \u2014 HTTP 403 fetching league page"
+      "Scrape failed — HTTP 403 fetching league page"
     ]
   },
   {
     "ts": "2026-08-02T18:00:42Z",
     "race": "Tour de France Femmes 2026",
     "changes": [
-      "Scrape failed \u2014 HTTP 403 fetching league page"
+      "Scrape failed — HTTP 403 fetching league page"
     ]
   },
   {
     "ts": "2026-08-02T16:55:59Z",
     "race": "Tour de France Femmes 2026",
     "changes": [
-      "Scrape failed \u2014 HTTP 403 fetching league page"
+      "Scrape failed — HTTP 403 fetching league page"
     ]
   },
   {
     "ts": "2026-08-02T15:38:47Z",
     "race": "Tour de France Femmes 2026",
     "changes": [
-      "Scrape failed \u2014 HTTP 403 fetching league page"
+      "Scrape failed — HTTP 403 fetching league page"
     ]
   },
   {
     "ts": "2026-08-02T14:26:51Z",
     "race": "Tour de France Femmes 2026",
     "changes": [
-      "Scrape failed \u2014 HTTP 403 fetching league page"
+      "Scrape failed — HTTP 403 fetching league page"
     ]
   },
   {
     "ts": "2026-08-02T12:34:35Z",
     "race": "Tour de France Femmes 2026",
     "changes": [
-      "Scrape failed \u2014 HTTP 403 fetching league page"
+      "Scrape failed — HTTP 403 fetching league page"
     ]
   },
   {
     "ts": "2026-08-02T11:14:36Z",
     "race": "Tour de France Femmes 2026",
     "changes": [
-      "Scrape failed \u2014 HTTP 403 fetching league page"
+      "Scrape failed — HTTP 403 fetching league page"
     ]
   },
   {
@@ -66,49 +74,49 @@
     "ts": "2026-08-01T22:52:39Z",
     "race": "Tour de France Femmes 2026",
     "changes": [
-      "Scrape failed \u2014 HTTP 403 fetching league page"
+      "Scrape failed — HTTP 403 fetching league page"
     ]
   },
   {
     "ts": "2026-08-01T21:52:35Z",
     "race": "Tour de France Femmes 2026",
     "changes": [
-      "Scrape failed \u2014 HTTP 403 fetching league page"
+      "Scrape failed — HTTP 403 fetching league page"
     ]
   },
   {
     "ts": "2026-08-01T20:48:42Z",
     "race": "Tour de France Femmes 2026",
     "changes": [
-      "Scrape failed \u2014 HTTP 403 fetching league page"
+      "Scrape failed — HTTP 403 fetching league page"
     ]
   },
   {
     "ts": "2026-08-01T19:42:01Z",
     "race": "Tour de France Femmes 2026",
     "changes": [
-      "Scrape failed \u2014 HTTP 403 fetching league page"
+      "Scrape failed — HTTP 403 fetching league page"
     ]
   },
   {
     "ts": "2026-08-01T18:02:10Z",
     "race": "Tour de France Femmes 2026",
     "changes": [
-      "Scrape failed \u2014 HTTP 403 fetching league page"
+      "Scrape failed — HTTP 403 fetching league page"
     ]
   },
   {
     "ts": "2026-08-01T16:56:32Z",
     "race": "Tour de France Femmes 2026",
     "changes": [
-      "Scrape failed \u2014 HTTP 403 fetching league page"
+      "Scrape failed — HTTP 403 fetching league page"
     ]
   },
   {
     "ts": "2026-08-01T16:14:31Z",
     "race": "Tour de France Femmes 2026",
     "changes": [
-      "Initial scrape \u2014 28 riders"
+      "Initial scrape — 28 riders"
     ]
   },
   {
@@ -181,7 +189,7 @@
     "ts": "2026-07-17T16:15:30Z",
     "race": "Tour de France 2026",
     "changes": [
-      "1 score updated \u2014 Florian Vermeersch stage 12: 24 \u2192 28"
+      "1 score updated — Florian Vermeersch stage 12: 24 → 28"
     ]
   },
   {
