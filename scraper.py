@@ -336,13 +336,28 @@ def main():
     for rid in rider_meta:
         rider_meta[rid]["category"] = rider_categories.get(rid, "")
 
+    old_stages_by_id = {}
+    if old_data:
+        for r in old_data.get("riders", []):
+            old_stages_by_id[r["id"]] = [(v or 0) for v in r.get("stages", [])]
+
+    failed_profiles = []
     rider_stages = {}
     for rid, meta in rider_meta.items():
         time.sleep(0.5)
         url = CONFIG["baseUrl"] + f"riderprofile.php?rider={rid}"
         print(f"  Profile: {meta['name']}")
         html = fetch(url)
-        rider_stages[rid] = parse_rider_profile(html, n)
+        if html is None:
+            cached = old_stages_by_id.get(rid)
+            if cached:
+                print(f"  WARNING: profile fetch failed for {meta['name']} — keeping cached stages")
+                rider_stages[rid] = cached
+            else:
+                rider_stages[rid] = [0] * n
+            failed_profiles.append(meta["name"])
+        else:
+            rider_stages[rid] = parse_rider_profile(html, n)
 
     stage_completed = [False] * n
     for stages in rider_stages.values():
@@ -420,6 +435,11 @@ def main():
     }
 
     changes = diff_data(old_data, output)
+    if failed_profiles:
+        changes.append(
+            f"{len(failed_profiles)} rider profile(s) failed to fetch, kept cached stages — "
+            + ", ".join(failed_profiles)
+        )
     if old_data is not None and not changes:
         print("Full scrape matched cached data — no write needed.")
         return

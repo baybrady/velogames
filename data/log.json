@@ -1,10 +1,18 @@
 [
   {
+    "ts": "2026-08-04T04:51:52Z",
+    "race": "Tour de France Femmes 2026",
+    "changes": [
+      "3 scores updated \u2014 Marianne Vos stage 1: 0 \u2192 5; Marianne Vos stage 2: 0 \u2192 112; Marianne Vos stage 3: 0 \u2192 117",
+      "2 rider profile(s) failed to fetch, kept cached stages \u2014 Niamh Fisher-Black, Kristen Faulkner"
+    ]
+  },
+  {
     "ts": "2026-08-04T02:33:36Z",
     "race": "Tour de France Femmes 2026",
     "changes": [
       "Stage 3 completed",
-      "11 scores updated — Demi Vollering stage 1: 129 → 127; Demi Vollering stage 2: 26 → 24; Loes Adegeest stage 2: 0 → 4; Marianne Vos stage 1: 7 → 0; Marianne Vos stage 2: 114 → 0; Marlen Reusser stage 1: 0 → 41; Marlen Reusser stage 2: 0 → 11; Pauline Ferrand-Prévot stage 1: 67 → 65; Pauline Ferrand-Prévot stage 2: 18 → 16; Sarah Van Dam stage 1: 0 → 2; Sarah Van Dam stage 2: 2 → 4"
+      "11 scores updated \u2014 Demi Vollering stage 1: 129 \u2192 127; Demi Vollering stage 2: 26 \u2192 24; Loes Adegeest stage 2: 0 \u2192 4; Marianne Vos stage 1: 7 \u2192 0; Marianne Vos stage 2: 114 \u2192 0; Marlen Reusser stage 1: 0 \u2192 41; Marlen Reusser stage 2: 0 \u2192 11; Pauline Ferrand-Pr\u00e9vot stage 1: 67 \u2192 65; Pauline Ferrand-Pr\u00e9vot stage 2: 18 \u2192 16; Sarah Van Dam stage 1: 0 \u2192 2; Sarah Van Dam stage 2: 2 \u2192 4"
     ]
   },
   {
