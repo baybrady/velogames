@@ -308,7 +308,7 @@ def main():
     team_rosters = {}
 
     for team in teams:
-        time.sleep(1)
+        time.sleep(2)
         url = CONFIG["baseUrl"] + f"teamroster.php?tid={team['tid']}"
         print(f"  Roster: {team['name']}")
         html = fetch(url)
@@ -328,7 +328,7 @@ def main():
                 "finished": r["finished"],
             }
 
-    time.sleep(1)
+    time.sleep(2)
     print("Fetching rider categories (riders.php)...")
     riders_html = fetch(CONFIG["baseUrl"] + "riders.php")
     rider_categories = parse_riders_page(riders_html)
@@ -344,7 +344,7 @@ def main():
     failed_profiles = []
     rider_stages = {}
     for rid, meta in rider_meta.items():
-        time.sleep(0.5)
+        time.sleep(1)
         url = CONFIG["baseUrl"] + f"riderprofile.php?rider={rid}"
         print(f"  Profile: {meta['name']}")
         html = fetch(url)
