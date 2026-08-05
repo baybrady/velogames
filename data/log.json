@@ -1,5 +1,12 @@
 [
   {
+    "ts": "2026-08-05T11:57:53Z",
+    "race": "Tour de France Femmes 2026",
+    "changes": [
+      "Scrape failed \u2014 HTTP 403 fetching league page"
+    ]
+  },
+  {
     "ts": "2026-08-05T03:38:53Z",
     "race": "Tour de France Femmes 2026",
     "changes": [
