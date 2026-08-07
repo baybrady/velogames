@@ -145,7 +145,6 @@
       "id": "20265121",
       "name": "Amber Kraak",
       "proTeam": "FDJ United - SUEZ",
-      "category": "6",
       "cost": 6,
       "finished": true,
       "teamIds": [
@@ -170,7 +169,6 @@
       "id": "20265439",
       "name": "Anna Van Der Breggen",
       "proTeam": "Team SD Worx - Protime",
-      "category": "14",
       "cost": 14,
       "finished": true,
       "teamIds": [
@@ -194,7 +192,6 @@
       "id": "20265135",
       "name": "Charlotte Kool",
       "proTeam": "Fenix-Premier Tech",
-      "category": "8",
       "cost": 8,
       "finished": true,
       "teamIds": [
@@ -218,7 +215,6 @@
       "id": "20265126",
       "name": "Demi Vollering",
       "proTeam": "FDJ United - SUEZ",
-      "category": "28",
       "cost": 28,
       "finished": true,
       "teamIds": [
@@ -243,7 +239,6 @@
       "id": "20265400",
       "name": "Heidi Franz",
       "proTeam": "St Michel - Preference Home - Auber93",
-      "category": "4",
       "cost": 4,
       "finished": true,
       "teamIds": [
@@ -267,7 +262,6 @@
       "id": "20265088",
       "name": "Henrietta Christie",
       "proTeam": "EF Education-Oatly",
-      "category": "4",
       "cost": 4,
       "finished": true,
       "teamIds": [
@@ -292,7 +286,6 @@
       "id": "20265478",
       "name": "Katrine Aalerud",
       "proTeam": "Uno-X Mobility",
-      "category": "8",
       "cost": 8,
       "finished": true,
       "teamIds": [
@@ -316,7 +309,6 @@
       "id": "20265010",
       "name": "Kimberley Le Court-Pienaar",
       "proTeam": "AG Insurance - Soudal Team",
-      "category": "12",
       "cost": 12,
       "finished": true,
       "teamIds": [
@@ -340,7 +332,6 @@
       "id": "20265091",
       "name": "Kristen Faulkner",
       "proTeam": "EF Education-Oatly",
-      "category": "8",
       "cost": 8,
       "finished": true,
       "teamIds": [
@@ -365,7 +356,6 @@
       "id": "20265245",
       "name": "Loes Adegeest",
       "proTeam": "Lidl - Trek",
-      "category": "6",
       "cost": 6,
       "finished": true,
       "teamIds": [
@@ -389,7 +379,6 @@
       "id": "20265442",
       "name": "Lorena Wiebes",
       "proTeam": "Team SD Worx - Protime",
-      "category": "16",
       "cost": 16,
       "finished": true,
       "teamIds": [
@@ -415,7 +404,6 @@
       "id": "20265433",
       "name": "Lotte Kopecky",
       "proTeam": "Team SD Worx - Protime",
-      "category": "10",
       "cost": 10,
       "finished": true,
       "teamIds": [
@@ -439,7 +427,6 @@
       "id": "20265248",
       "name": "Lucinda Brand",
       "proTeam": "Lidl - Trek",
-      "category": "6",
       "cost": 6,
       "finished": true,
       "teamIds": [
@@ -463,7 +450,6 @@
       "id": "20265456",
       "name": "Marianne Vos",
       "proTeam": "Team Visma | Lease a Bike",
-      "category": "14",
       "cost": 14,
       "finished": true,
       "teamIds": [
@@ -487,7 +473,6 @@
       "id": "20265350",
       "name": "Marlen Reusser",
       "proTeam": "Movistar Team",
-      "category": "14",
       "cost": 14,
       "finished": true,
       "teamIds": [
@@ -511,7 +496,6 @@
       "id": "20265462",
       "name": "Mavi Garc\u00eda",
       "proTeam": "UAE Team ADQ",
-      "category": "8",
       "cost": 8,
       "finished": true,
       "teamIds": [
@@ -535,7 +519,6 @@
       "id": "20265230",
       "name": "Naia Amondarain",
       "proTeam": "Laboral Kutxa - Fundaci\u00f3n Euskadi",
-      "category": "4",
       "cost": 4,
       "finished": true,
       "teamIds": [
@@ -559,7 +542,6 @@
       "id": "20265250",
       "name": "Niamh Fisher-Black",
       "proTeam": "Lidl - Trek",
-      "category": "12",
       "cost": 12,
       "finished": true,
       "teamIds": [
@@ -583,7 +565,6 @@
       "id": "20265097",
       "name": "Noemi R\u00fcegg",
       "proTeam": "EF Education-Oatly",
-      "category": "8",
       "cost": 8,
       "finished": true,
       "teamIds": [
@@ -607,7 +588,6 @@
       "id": "20265460",
       "name": "Paula Blasi",
       "proTeam": "UAE Team ADQ",
-      "category": "20",
       "cost": 20,
       "finished": true,
       "teamIds": [
@@ -632,7 +612,6 @@
       "id": "20265446",
       "name": "Pauline Ferrand-Pr\u00e9vot",
       "proTeam": "Team Visma | Lease a Bike",
-      "category": "20",
       "cost": 20,
       "finished": true,
       "teamIds": [
@@ -657,7 +636,6 @@
       "id": "20265415",
       "name": "Pfeiffer Georgi",
       "proTeam": "Team Picnic PostNL",
-      "category": "6",
       "cost": 6,
       "finished": true,
       "teamIds": [
@@ -681,7 +659,6 @@
       "id": "20265138",
       "name": "Puck Pieterse",
       "proTeam": "Fenix-Premier Tech",
-      "category": "12",
       "cost": 12,
       "finished": true,
       "teamIds": [
@@ -705,7 +682,6 @@
       "id": "20265256",
       "name": "Riejanne Markus",
       "proTeam": "Lidl - Trek",
-      "category": "8",
       "cost": 8,
       "finished": true,
       "teamIds": [
@@ -729,7 +705,6 @@
       "id": "20265061",
       "name": "Rosa Maria Kl\u00f6ser",
       "proTeam": "CANYON//SRAM zondacrypto",
-      "category": "4",
       "cost": 4,
       "finished": true,
       "teamIds": [
@@ -753,7 +728,6 @@
       "id": "20265272",
       "name": "Ruby Roseman-Gannon",
       "proTeam": "Liv AlUla Jayco",
-      "category": "6",
       "cost": 6,
       "finished": true,
       "teamIds": [
@@ -777,7 +751,6 @@
       "id": "20265453",
       "name": "Sarah Van Dam",
       "proTeam": "Team Visma | Lease a Bike",
-      "category": "8",
       "cost": 8,
       "finished": true,
       "teamIds": [
@@ -801,7 +774,6 @@
       "id": "20265056",
       "name": "Zoe B\u00e4ckstedt",
       "proTeam": "CANYON//SRAM zondacrypto",
-      "category": "8",
       "cost": 8,
       "finished": true,
       "teamIds": [

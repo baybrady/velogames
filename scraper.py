@@ -164,7 +164,14 @@ def parse_roster(html):
 
 
 def parse_riders_page(html):
-    """Returns {rider_id: category} from riders.php (e.g. 'All Rounder', 'Climber')."""
+    """Returns {rider_id: category} from riders.php (e.g. 'All Rounder', 'Climber').
+
+    Velogames sometimes omits the 'Class' column entirely (seen on TdF Femmes 2026
+    from around stage 6/7 on — the <th> is HTML-commented out and the <td> is gone
+    too), which shifts Cost into the column category used to occupy. Disambiguate
+    by cell count rather than assuming a fixed index, so a missing column yields no
+    category data instead of silently mislabeling cost as category.
+    """
     if not html:
         return {}
     result = {}
@@ -176,8 +183,10 @@ def parse_riders_page(html):
         rid = ids[0]
         tds = [re.sub(r'<[^>]+>', '', t.group(1)).strip()
                for t in re.finditer(r'<td[^>]*>([\s\S]*?)</td>', tr, re.IGNORECASE)]
-        # tds: ['' (image), name, pro_team, category, cost, pct, score]
-        if len(tds) >= 4:
+        # tds: ['' (image), name, pro_team, category, cost, pct, score] when the
+        # Class column is present, or ['' (image), name, pro_team, cost, pct, score]
+        # when Velogames has dropped it.
+        if len(tds) >= 7:
             result[rid] = tds[3]
     return result
 
@@ -334,7 +343,8 @@ def main():
     rider_categories = parse_riders_page(riders_html)
     print(f"  Got categories for {len(rider_categories)} riders")
     for rid in rider_meta:
-        rider_meta[rid]["category"] = rider_categories.get(rid, "")
+        if rid in rider_categories:
+            rider_meta[rid]["category"] = rider_categories[rid]
 
     old_stages_by_id = {}
     if old_data:
@@ -395,18 +405,20 @@ def main():
             else:
                 stage_vals.append(pts)
 
-        riders_out.append({
+        rider_out = {
             "id":         rid,
             "name":       meta["name"],
             "proTeam":    meta["proTeam"],
-            "category":   meta["category"],
             "cost":       cost,
             "finished":   meta["finished"],
             "teamIds":    rider_to_tids.get(rid, []),
             "stages":     stage_vals,
             "total":      total,
             "efficiency": eff,
-        })
+        }
+        if "category" in meta:
+            rider_out["category"] = meta["category"]
+        riders_out.append(rider_out)
 
     teams_sorted = sorted(teams, key=lambda t: -t["score"])
     for team in teams_sorted:
