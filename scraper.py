@@ -19,7 +19,7 @@ CONFIG = {
     "leagueUrl":  "https://www.velogames.com/velogame-femmes/2026/leaguescores.php?league=118055015",
     "baseUrl":    "https://www.velogames.com/velogame-femmes/2026/",
     "leagueId":   "118055015",
-    "numStages":  9,
+    "numStages":  10,
     "outputPath": "data/tdf-femmes-2026.json",
     "active":     True,
 }

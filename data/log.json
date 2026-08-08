@@ -1,5 +1,12 @@
 [
   {
+    "ts": "2026-08-08T16:05:37Z",
+    "race": "Tour de France Femmes 2026",
+    "changes": [
+      "Fixed numStages config (8 stages + Bonus -> 9 stages + Bonus) and re-synced from live data"
+    ]
+  },
+  {
     "ts": "2026-08-08T15:37:27Z",
     "race": "Tour de France Femmes 2026",
     "changes": [
@@ -87,8 +94,7 @@
     "ts": "2026-08-07T19:28:13Z",
     "race": "Tour de France Femmes 2026",
     "changes": [
-      "Scrape failed \u2014 HTTP 403 fetching league page"
-    ]
+      "Scrape failed \u2014 HTTP 403 fetching league page"    ]
   },
   {
     "ts": "2026-08-07T18:12:07Z",
