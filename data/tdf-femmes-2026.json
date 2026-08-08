@@ -24,7 +24,7 @@
     true,
     true,
     true,
-    false,
+    true,
     false,
     false
   ],
@@ -32,7 +32,7 @@
     {
       "tid": "2856",
       "name": "Tandemonium",
-      "score": 1954,
+      "score": 2224,
       "manager": "David P",
       "stageSums": [
         411,
@@ -42,7 +42,7 @@
         280,
         266,
         270,
-        0,
+        270,
         0,
         0
       ],
@@ -54,15 +54,15 @@
         1418,
         1684,
         1954,
-        1954,
-        1954,
-        1954
+        2224,
+        2224,
+        2224
       ]
     },
     {
       "tid": "681",
       "name": "Team Mumu",
-      "score": 1950,
+      "score": 2161,
       "manager": "David",
       "stageSums": [
         547,
@@ -72,7 +72,7 @@
         144,
         356,
         218,
-        0,
+        211,
         0,
         0
       ],
@@ -84,45 +84,15 @@
         1376,
         1732,
         1950,
-        1950,
-        1950,
-        1950
-      ]
-    },
-    {
-      "tid": "93141",
-      "name": "Spinzealot",
-      "score": 1516,
-      "manager": "Mark",
-      "stageSums": [
-        380,
-        241,
-        83,
-        249,
-        232,
-        143,
-        188,
-        0,
-        0,
-        0
-      ],
-      "stageCumul": [
-        380,
-        621,
-        704,
-        953,
-        1185,
-        1328,
-        1516,
-        1516,
-        1516,
-        1516
+        2161,
+        2161,
+        2161
       ]
     },
     {
       "tid": "1363",
       "name": "Billabong Bunyips",
-      "score": 1435,
+      "score": 1755,
       "manager": "Cathy",
       "stageSums": [
         208,
@@ -132,7 +102,7 @@
         227,
         83,
         200,
-        0,
+        320,
         0,
         0
       ],
@@ -144,9 +114,39 @@
         1152,
         1235,
         1435,
-        1435,
-        1435,
-        1435
+        1755,
+        1755,
+        1755
+      ]
+    },
+    {
+      "tid": "93141",
+      "name": "Spinzealot",
+      "score": 1755,
+      "manager": "Mark",
+      "stageSums": [
+        380,
+        241,
+        83,
+        249,
+        232,
+        143,
+        188,
+        239,
+        0,
+        0
+      ],
+      "stageCumul": [
+        380,
+        621,
+        704,
+        953,
+        1185,
+        1328,
+        1516,
+        1755,
+        1755,
+        1755
       ]
     }
   ],
@@ -169,12 +169,12 @@
         12,
         6,
         10,
-        null,
+        16,
         null,
         null
       ],
-      "total": 52,
-      "efficiency": 8.7
+      "total": 68,
+      "efficiency": 11.3
     },
     {
       "id": "20265439",
@@ -193,7 +193,7 @@
         9,
         0,
         0,
-        null,
+        0,
         null,
         null
       ],
@@ -217,7 +217,7 @@
         0,
         2,
         0,
-        null,
+        0,
         null,
         null
       ],
@@ -231,8 +231,8 @@
       "cost": 28,
       "finished": true,
       "teamIds": [
-        "93141",
-        "1363"
+        "1363",
+        "93141"
       ],
       "stages": [
         127,
@@ -242,12 +242,12 @@
         184,
         29,
         158,
-        null,
+        189,
         null,
         null
       ],
-      "total": 666,
-      "efficiency": 23.8
+      "total": 855,
+      "efficiency": 30.5
     },
     {
       "id": "20265400",
@@ -266,7 +266,7 @@
         0,
         0,
         0,
-        null,
+        0,
         null,
         null
       ],
@@ -291,7 +291,7 @@
         0,
         4,
         0,
-        null,
+        0,
         null,
         null
       ],
@@ -315,7 +315,7 @@
         1,
         25,
         0,
-        null,
+        0,
         null,
         null
       ],
@@ -339,12 +339,12 @@
         28,
         165,
         57,
-        null,
+        105,
         null,
         null
       ],
-      "total": 540,
-      "efficiency": 45.0
+      "total": 645,
+      "efficiency": 53.8
     },
     {
       "id": "20265091",
@@ -353,8 +353,8 @@
       "cost": 8,
       "finished": true,
       "teamIds": [
-        "93141",
-        "1363"
+        "1363",
+        "93141"
       ],
       "stages": [
         0,
@@ -364,12 +364,12 @@
         0,
         4,
         0,
-        null,
+        5,
         null,
         null
       ],
-      "total": 74,
-      "efficiency": 9.2
+      "total": 79,
+      "efficiency": 9.9
     },
     {
       "id": "20265245",
@@ -388,12 +388,12 @@
         4,
         26,
         5,
-        null,
+        25,
         null,
         null
       ],
-      "total": 47,
-      "efficiency": 7.8
+      "total": 72,
+      "efficiency": 12.0
     },
     {
       "id": "20265442",
@@ -414,12 +414,12 @@
         22,
         16,
         10,
-        null,
+        20,
         null,
         null
       ],
-      "total": 455,
-      "efficiency": 28.4
+      "total": 475,
+      "efficiency": 29.7
     },
     {
       "id": "20265433",
@@ -438,12 +438,12 @@
         16,
         35,
         4,
-        null,
+        90,
         null,
         null
       ],
-      "total": 223,
-      "efficiency": 22.3
+      "total": 313,
+      "efficiency": 31.3
     },
     {
       "id": "20265248",
@@ -462,7 +462,7 @@
         4,
         4,
         4,
-        null,
+        0,
         null,
         null
       ],
@@ -486,12 +486,12 @@
         0,
         0,
         0,
-        null,
+        2,
         null,
         null
       ],
-      "total": 235,
-      "efficiency": 16.8
+      "total": 237,
+      "efficiency": 16.9
     },
     {
       "id": "20265350",
@@ -510,12 +510,12 @@
         148,
         30,
         114,
-        null,
+        40,
         null,
         null
       ],
-      "total": 529,
-      "efficiency": 37.8
+      "total": 569,
+      "efficiency": 40.6
     },
     {
       "id": "20265462",
@@ -534,12 +534,12 @@
         6,
         9,
         11,
-        null,
+        14,
         null,
         null
       ],
-      "total": 73,
-      "efficiency": 9.1
+      "total": 87,
+      "efficiency": 10.9
     },
     {
       "id": "20265230",
@@ -558,7 +558,7 @@
         0,
         0,
         0,
-        null,
+        0,
         null,
         null
       ],
@@ -582,12 +582,12 @@
         50,
         12,
         23,
-        null,
+        9,
         null,
         null
       ],
-      "total": 142,
-      "efficiency": 11.8
+      "total": 151,
+      "efficiency": 12.6
     },
     {
       "id": "20265097",
@@ -606,12 +606,12 @@
         15,
         48,
         9,
-        null,
+        59,
         null,
         null
       ],
-      "total": 340,
-      "efficiency": 42.5
+      "total": 399,
+      "efficiency": 49.9
     },
     {
       "id": "20265460",
@@ -631,12 +631,12 @@
         22,
         37,
         104,
-        null,
+        64,
         null,
         null
       ],
-      "total": 274,
-      "efficiency": 13.7
+      "total": 338,
+      "efficiency": 16.9
     },
     {
       "id": "20265446",
@@ -656,7 +656,7 @@
         4,
         6,
         7,
-        null,
+        0,
         null,
         null
       ],
@@ -680,7 +680,7 @@
         0,
         0,
         0,
-        null,
+        0,
         null,
         null
       ],
@@ -704,12 +704,12 @@
         60,
         124,
         16,
-        null,
+        10,
         null,
         null
       ],
-      "total": 373,
-      "efficiency": 31.1
+      "total": 383,
+      "efficiency": 31.9
     },
     {
       "id": "20265256",
@@ -728,7 +728,7 @@
         14,
         54,
         4,
-        null,
+        0,
         null,
         null
       ],
@@ -752,12 +752,12 @@
         4,
         2,
         12,
-        null,
+        6,
         null,
         null
       ],
-      "total": 18,
-      "efficiency": 4.5
+      "total": 24,
+      "efficiency": 6.0
     },
     {
       "id": "20265272",
@@ -776,12 +776,12 @@
         0,
         0,
         17,
-        null,
+        4,
         null,
         null
       ],
-      "total": 17,
-      "efficiency": 2.8
+      "total": 21,
+      "efficiency": 3.5
     },
     {
       "id": "20265453",
@@ -800,12 +800,12 @@
         10,
         90,
         0,
-        null,
+        62,
         null,
         null
       ],
-      "total": 108,
-      "efficiency": 13.5
+      "total": 170,
+      "efficiency": 21.2
     },
     {
       "id": "20265056",
@@ -824,13 +824,13 @@
         4,
         2,
         12,
-        null,
+        6,
         null,
         null
       ],
-      "total": 168,
-      "efficiency": 21.0
+      "total": 174,
+      "efficiency": 21.8
     }
   ],
-  "lastUpdated": "2026-08-08T16:05:37Z"
+  "lastUpdated": "2026-08-08T21:05:43Z"
 }
