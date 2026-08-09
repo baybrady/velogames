@@ -164,6 +164,18 @@
     }
     tbody:first-child tr.section-hdr td { border-top: none; }
 
+    /* ── Riders-tab divider (before "other interesting riders") ──── */
+    tr.section-divider td {
+      background: #f8fafc;
+      font-weight: 700; font-size: 11px;
+      text-transform: uppercase; letter-spacing: .06em;
+      color: var(--muted);
+      padding: 8px 8px;
+      border-top: 2px solid var(--border);
+      text-align: left; white-space: normal;
+      cursor: default;
+    }
+
     /* ── Color dot ────────────────────────────────────────── */
     .color-dot {
       display: inline-block; width: 9px; height: 9px;
@@ -355,33 +367,9 @@ function renderRiders() {
   const picksHdr = hasCat
     ? `<th class="w-picks col-picks" data-sort="${T+4}" data-type="num">Picks</th>` : '';
 
-  let html = `<div class="card"><div class="table-wrap"><table id="t-riders">
-    <thead><tr>
-      ${teamHdrs}
-      <th class="lft w-rider"   data-sort="${T}">Rider</th>
-      <th class="lft w-proteam col-proteam" data-sort="${T+1}">Pro Team</th>
-      ${catHdr}
-      <th class="w-cost"        data-sort="${iCost}" data-type="num">Cost</th>
-      ${picksHdr}
-      ${stageHdrs}
-      <th class="w-total-r" data-sort="${iStage0+n}"   data-type="num">Total</th>
-      <th class="w-eff"     data-sort="${iStage0+n+1}" data-type="num">Eff</th>
-    </tr></thead><tbody>`;
+  const totalCols = T + n + 5 + (hasCat ? 2 : 0);
 
-  // Default order: as if sorted by last team (highest priority), then the
-  // team before it, ... down to the first team — a convenient way to see
-  // each team's picks at a glance. Achieved via successive stable sorts
-  // from lowest to highest priority key, ending on the last team column.
-  const riderRows = [...D.riders].sort((a, b) => a.name.localeCompare(b.name));
-  teamCols.forEach(t => {
-    riderRows.sort((a, b) => {
-      const ap = a.teamIds.includes(t.tid) ? 1 : 0;
-      const bp = b.teamIds.includes(t.tid) ? 1 : 0;
-      return bp - ap;
-    });
-  });
-
-  for (const rider of riderRows) {
+  function rowHtml(rider) {
     const url = D.baseUrl + 'riderprofile.php?rider=' + rider.id;
     const dnf = rider.finished ? '' : ' class="dnf"';
 
@@ -401,7 +389,7 @@ function renderRiders() {
     const catCell   = hasCat ? `<td class="lft col-cat">${rider.category || ''}</td>` : '';
     const picksCell = hasCat ? `<td class="col-picks">${rider.teamIds.length}</td>` : '';
 
-    html += `<tr${dnf} data-tids="${rider.teamIds.join(',')}">
+    return `<tr${dnf} data-tids="${rider.teamIds.join(',')}">
       ${teamCells}
       <td class="lft"><a href="${url}" target="_blank">${rider.name}${rider.finished ? '' : ' †'}</a></td>
       <td class="lft col-proteam">${rider.proTeam}</td>
@@ -414,7 +402,44 @@ function renderRiders() {
     </tr>`;
   }
 
-  html += '</tbody></table></div></div>';
+  let html = `<div class="card"><div class="table-wrap"><table id="t-riders">
+    <thead><tr>
+      ${teamHdrs}
+      <th class="lft w-rider"   data-sort="${T}">Rider</th>
+      <th class="lft w-proteam col-proteam" data-sort="${T+1}">Pro Team</th>
+      ${catHdr}
+      <th class="w-cost"        data-sort="${iCost}" data-type="num">Cost</th>
+      ${picksHdr}
+      ${stageHdrs}
+      <th class="w-total-r" data-sort="${iStage0+n}"   data-type="num">Total</th>
+      <th class="w-eff"     data-sort="${iStage0+n+1}" data-type="num">Eff</th>
+    </tr></thead>`;
+
+  // Default order: as if sorted by last team (highest priority), then the
+  // team before it, ... down to the first team — a convenient way to see
+  // each team's picks at a glance. Achieved via successive stable sorts
+  // from lowest to highest priority key, ending on the last team column.
+  const riderRows = [...D.riders].sort((a, b) => a.name.localeCompare(b.name));
+  teamCols.forEach(t => {
+    riderRows.sort((a, b) => {
+      const ap = a.teamIds.includes(t.tid) ? 1 : 0;
+      const bp = b.teamIds.includes(t.tid) ? 1 : 0;
+      return bp - ap;
+    });
+  });
+
+  html += '<tbody data-sortable>' + riderRows.map(rowHtml).join('') + '</tbody>';
+
+  // "Other interesting riders" — top riders by efficiency that nobody in
+  // the league picked. Own tbody so sorting never intermingles them with
+  // the picked-rider rows above the divider.
+  const others = D.otherRiders || [];
+  if (others.length) {
+    html += `<tbody><tr class="section-divider"><td colspan="${totalCols}">Efficient riders not selected by any team</td></tr></tbody>`;
+    html += '<tbody data-sortable>' + others.map(rowHtml).join('') + '</tbody>';
+  }
+
+  html += '</table></div></div>';
   document.getElementById('riders').innerHTML = html;
   sortable('t-riders', null, true);
 }
@@ -559,29 +584,41 @@ function sortable(tableId, initCol, initAsc) {
   const tbl     = document.getElementById(tableId);
   if (!tbl) return;
   const headers = [...tbl.querySelectorAll('th[data-sort]')];
+  // Sortable groups (e.g. picked riders vs. "other interesting riders" on
+  // the Riders tab) each get their own <tbody data-sortable> — sorting a
+  // column re-sorts rows within each group separately, so they never mix.
+  // Tables with just one implicit tbody (no data-sortable markers) fall
+  // back to treating that single tbody as the one sortable group.
+  const tbodies = [...tbl.querySelectorAll('tbody[data-sortable]')];
+  if (!tbodies.length) {
+    const tb = tbl.querySelector('tbody');
+    if (tb) tbodies.push(tb);
+  }
   let col = initCol ?? null, asc = initAsc ?? true;
 
   function applySort() {
     headers.forEach(h => h.classList.remove('sort-asc', 'sort-desc'));
     const th   = headers.find(h => +h.dataset.sort === col);
     if (th) th.classList.add(asc ? 'sort-asc' : 'sort-desc');
-    const type  = th?.dataset.type || 'text';
-    const tbody = tbl.querySelector('tbody');
-    const rows  = [...tbody.querySelectorAll('tr')];
-    rows.sort((a, b) => {
-      const av = a.cells[col]?.textContent.trim() ?? '';
-      const bv = b.cells[col]?.textContent.trim() ?? '';
-      let cmp;
-      if (type === 'num') {
-        const an = (av === '—' || av === '') ? -Infinity : parseFloat(av.replace(/[^0-9.\-]/g, '')) || 0;
-        const bn = (bv === '—' || bv === '') ? -Infinity : parseFloat(bv.replace(/[^0-9.\-]/g, '')) || 0;
-        cmp = an - bn;
-      } else {
-        cmp = av.replace(/[†↗●]/g, '').trim().localeCompare(bv.replace(/[†↗●]/g, '').trim());
-      }
-      return asc ? cmp : -cmp;
+    const type = th?.dataset.type || 'text';
+
+    tbodies.forEach(tbody => {
+      const rows = [...tbody.querySelectorAll('tr')];
+      rows.sort((a, b) => {
+        const av = a.cells[col]?.textContent.trim() ?? '';
+        const bv = b.cells[col]?.textContent.trim() ?? '';
+        let cmp;
+        if (type === 'num') {
+          const an = (av === '—' || av === '') ? -Infinity : parseFloat(av.replace(/[^0-9.\-]/g, '')) || 0;
+          const bn = (bv === '—' || bv === '') ? -Infinity : parseFloat(bv.replace(/[^0-9.\-]/g, '')) || 0;
+          cmp = an - bn;
+        } else {
+          cmp = av.replace(/[†↗●]/g, '').trim().localeCompare(bv.replace(/[†↗●]/g, '').trim());
+        }
+        return asc ? cmp : -cmp;
+      });
+      rows.forEach(r => tbody.appendChild(r));
     });
-    rows.forEach(r => tbody.appendChild(r));
   }
 
   if (col != null) applySort();

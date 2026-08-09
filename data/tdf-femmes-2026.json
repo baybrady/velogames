@@ -832,5 +832,227 @@
       "efficiency": 21.8
     }
   ],
-  "lastUpdated": "2026-08-08T21:05:43Z"
+  "otherRiders": [
+    {
+      "id": "20265468",
+      "name": "Elisa Longo Borghini",
+      "proTeam": "UAE Team ADQ",
+      "cost": 12,
+      "finished": true,
+      "teamIds": [],
+      "stages": [
+        91,
+        22,
+        18,
+        46,
+        31,
+        84,
+        132,
+        146,
+        null,
+        null
+      ],
+      "total": 570,
+      "efficiency": 47.5
+    },
+    {
+      "id": "20265489",
+      "name": "Sigrid Ytterhus Haugset",
+      "proTeam": "Uno-X Mobility",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [],
+      "stages": [
+        0,
+        0,
+        220,
+        28,
+        6,
+        4,
+        0,
+        0,
+        null,
+        null
+      ],
+      "total": 258,
+      "efficiency": 43.0
+    },
+    {
+      "id": "20265065",
+      "name": "Kasia Niewiadoma",
+      "proTeam": "CANYON//SRAM zondacrypto",
+      "cost": 14,
+      "finished": true,
+      "teamIds": [],
+      "stages": [
+        74,
+        14,
+        13,
+        30,
+        124,
+        20,
+        188,
+        125,
+        null,
+        null
+      ],
+      "total": 588,
+      "efficiency": 42.0
+    },
+    {
+      "id": "20265477",
+      "name": "Dominika W\u0142odarczyk",
+      "proTeam": "UAE Team ADQ",
+      "cost": 10,
+      "finished": true,
+      "teamIds": [],
+      "stages": [
+        6,
+        21,
+        29,
+        10,
+        126,
+        61,
+        71,
+        93,
+        null,
+        null
+      ],
+      "total": 417,
+      "efficiency": 41.7
+    },
+    {
+      "id": "20265093",
+      "name": "C\u00e9drine Kerbaol",
+      "proTeam": "EF Education-Oatly",
+      "cost": 12,
+      "finished": true,
+      "teamIds": [],
+      "stages": [
+        52,
+        16,
+        65,
+        80,
+        12,
+        134,
+        76,
+        45,
+        null,
+        null
+      ],
+      "total": 480,
+      "efficiency": 40.0
+    },
+    {
+      "id": "20265254",
+      "name": "Isabella Holmgren",
+      "proTeam": "Lidl - Trek",
+      "cost": 8,
+      "finished": true,
+      "teamIds": [],
+      "stages": [
+        17,
+        10,
+        6,
+        9,
+        99,
+        18,
+        46,
+        11,
+        null,
+        null
+      ],
+      "total": 216,
+      "efficiency": 27.0
+    },
+    {
+      "id": "20265064",
+      "name": "Antonia Niedermaier",
+      "proTeam": "CANYON//SRAM zondacrypto",
+      "cost": 12,
+      "finished": true,
+      "teamIds": [],
+      "stages": [
+        4,
+        4,
+        5,
+        12,
+        104,
+        28,
+        98,
+        47,
+        null,
+        null
+      ],
+      "total": 302,
+      "efficiency": 25.2
+    },
+    {
+      "id": "20265177",
+      "name": "Thalita De Jong",
+      "proTeam": "Human Powered Health",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [],
+      "stages": [
+        0,
+        2,
+        17,
+        0,
+        57,
+        9,
+        30,
+        25,
+        null,
+        null
+      ],
+      "total": 140,
+      "efficiency": 23.3
+    },
+    {
+      "id": "20265083",
+      "name": "Nikola Noskov\u00e1",
+      "proTeam": "Cofidis Women Team",
+      "cost": 4,
+      "finished": true,
+      "teamIds": [],
+      "stages": [
+        22,
+        2,
+        14,
+        6,
+        6,
+        26,
+        6,
+        6,
+        null,
+        null
+      ],
+      "total": 88,
+      "efficiency": 22.0
+    },
+    {
+      "id": "20265449",
+      "name": "Lieke Nooijen",
+      "proTeam": "Team Visma | Lease a Bike",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [],
+      "stages": [
+        2,
+        4,
+        2,
+        120,
+        0,
+        0,
+        0,
+        2,
+        null,
+        null
+      ],
+      "total": 130,
+      "efficiency": 21.7
+    }
+  ],
+  "lastUpdated": "2026-08-09T18:38:45Z"
 }

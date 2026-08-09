@@ -164,13 +164,22 @@ def parse_roster(html):
 
 
 def parse_riders_page(html):
-    """Returns {rider_id: category} from riders.php (e.g. 'All Rounder', 'Climber').
+    """Parses riders.php — the full race startlist (every rider available for
+    selection, not just those on a roster in our league).
+
+    Returns {rider_id: {"name", "proTeam", "cost", "score", "category"?}}.
+    "score" is the rider's site-wide total points to date, which matches the
+    sum of per-stage points we scrape separately via riderprofile.php for
+    rostered riders (confirmed against live data) — so it's safe to use
+    directly for riders nobody in our league picked, without an extra
+    per-rider profile fetch for each of them.
 
     Velogames sometimes omits the 'Class' column entirely (seen on TdF Femmes 2026
     from around stage 6/7 on — the <th> is HTML-commented out and the <td> is gone
     too), which shifts Cost into the column category used to occupy. Disambiguate
-    by cell count rather than assuming a fixed index, so a missing column yields no
-    category data instead of silently mislabeling cost as category.
+    by cell count rather than assuming a fixed index: 7+ cells means Class is
+    present (category at index 3, cost/pct/score follow); 6 cells means it's
+    gone (cost/pct/score shift down one, no category data).
     """
     if not html:
         return {}
@@ -187,7 +196,20 @@ def parse_riders_page(html):
         # Class column is present, or ['' (image), name, pro_team, cost, pct, score]
         # when Velogames has dropped it.
         if len(tds) >= 7:
-            result[rid] = tds[3]
+            name, pro_team, category, cost, score = tds[1], tds[2], tds[3], tds[4], tds[6]
+        elif len(tds) == 6:
+            name, pro_team, category, cost, score = tds[1], tds[2], None, tds[3], tds[5]
+        else:
+            continue
+        rec = {
+            "name":    name,
+            "proTeam": pro_team,
+            "cost":    int(cost) if cost.isdigit() else 0,
+            "score":   int(score) if score.isdigit() else 0,
+        }
+        if category:
+            rec["category"] = category
+        result[rid] = rec
     return result
 
 
@@ -338,13 +360,14 @@ def main():
             }
 
     time.sleep(2)
-    print("Fetching rider categories (riders.php)...")
+    print("Fetching full startlist (riders.php)...")
     riders_html = fetch(CONFIG["baseUrl"] + "riders.php")
-    rider_categories = parse_riders_page(riders_html)
-    print(f"  Got categories for {len(rider_categories)} riders")
+    riders_full = parse_riders_page(riders_html)
+    n_cat = sum(1 for r in riders_full.values() if "category" in r)
+    print(f"  Got {len(riders_full)} riders, categories for {n_cat}")
     for rid in rider_meta:
-        if rid in rider_categories:
-            rider_meta[rid]["category"] = rider_categories[rid]
+        if rid in riders_full and "category" in riders_full[rid]:
+            rider_meta[rid]["category"] = riders_full[rid]["category"]
 
     old_stages_by_id = {}
     if old_data:
@@ -420,6 +443,59 @@ def main():
             rider_out["category"] = meta["category"]
         riders_out.append(rider_out)
 
+    # "Other interesting riders" — top 10 by efficiency among riders on the
+    # full startlist (riders.php) that nobody in our league picked. Ranking
+    # itself needs no extra requests (riders.php already gives cost + total
+    # score for every rider), but once we know which 10 they are, we fetch
+    # their riderprofile.php too so the table can show real per-stage
+    # heatmap cells instead of a total-only placeholder.
+    other_candidates = []
+    for rid, rec in riders_full.items():
+        if rid in rider_meta:
+            continue
+        cost = rec.get("cost", 0)
+        if cost <= 0:
+            continue
+        total = rec.get("score", 0)
+        entry = {
+            "id":         rid,
+            "name":       rec["name"],
+            "proTeam":    rec["proTeam"],
+            "cost":       cost,
+            "finished":   True,
+            "teamIds":    [],
+            "stages":     [None] * n,
+            "total":      total,
+            "efficiency": round(total / cost, 1),
+        }
+        if "category" in rec:
+            entry["category"] = rec["category"]
+        other_candidates.append(entry)
+    other_candidates.sort(key=lambda r: -r["efficiency"])
+    other_riders_out = other_candidates[:10]
+
+    # Fetch real per-stage scores for just these top 10, so their rows get
+    # the same stage-by-stage heatmap as picked riders instead of the
+    # placeholder [None] * n set above. There's no roster page for an
+    # unpicked rider (that's the whole point — nobody rostered them), so
+    # unlike picked riders there's no fa-check icon to read DNF status
+    # from; "finished" stays True (unknown) and stages simply score 0
+    # rather than trimming to null after a would-be abandonment.
+    for entry in other_riders_out:
+        time.sleep(1)
+        url = CONFIG["baseUrl"] + f"riderprofile.php?rider={entry['id']}"
+        print(f"  Profile (other): {entry['name']}")
+        html = fetch(url)
+        if html is None:
+            print(f"  WARNING: profile fetch failed for {entry['name']} — keeping total only")
+            failed_profiles.append(entry["name"])
+            continue
+        stages = parse_rider_profile(html, n)
+        entry["stages"] = [
+            stages[i] if stage_completed[i] else None
+            for i in range(n)
+        ]
+
     teams_sorted = sorted(teams, key=lambda t: -t["score"])
     for team in teams_sorted:
         rids = team_rosters.get(team["tid"], [])
@@ -444,13 +520,14 @@ def main():
         "stageCompleted": stage_completed,
         "teams":          teams_sorted,
         "riders":         riders_out,
+        "otherRiders":    other_riders_out,
     }
 
     changes = diff_data(old_data, output)
     if failed_profiles:
         changes.append(
-            f"{len(failed_profiles)} rider profile(s) failed to fetch, kept cached stages — "
-            + ", ".join(failed_profiles)
+            f"{len(failed_profiles)} rider profile(s) failed to fetch (kept cached stages, "
+            "or total-only for unrostered riders) — " + ", ".join(failed_profiles)
         )
     if old_data is not None and not changes:
         print("Full scrape matched cached data — no write needed.")
