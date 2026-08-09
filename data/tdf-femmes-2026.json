@@ -25,14 +25,14 @@
     true,
     true,
     true,
-    false,
-    false
+    true,
+    true
   ],
   "teams": [
     {
       "tid": "2856",
       "name": "Tandemonium",
-      "score": 2224,
+      "score": 3166,
       "manager": "David P",
       "stageSums": [
         411,
@@ -43,8 +43,8 @@
         266,
         270,
         270,
-        0,
-        0
+        322,
+        620
       ],
       "stageCumul": [
         411,
@@ -55,14 +55,14 @@
         1684,
         1954,
         2224,
-        2224,
-        2224
+        2546,
+        3166
       ]
     },
     {
       "tid": "681",
       "name": "Team Mumu",
-      "score": 2161,
+      "score": 2920,
       "manager": "David",
       "stageSums": [
         547,
@@ -73,8 +73,8 @@
         356,
         218,
         211,
-        0,
-        0
+        229,
+        530
       ],
       "stageCumul": [
         547,
@@ -85,44 +85,14 @@
         1732,
         1950,
         2161,
-        2161,
-        2161
-      ]
-    },
-    {
-      "tid": "1363",
-      "name": "Billabong Bunyips",
-      "score": 1755,
-      "manager": "Cathy",
-      "stageSums": [
-        208,
-        182,
-        314,
-        221,
-        227,
-        83,
-        200,
-        320,
-        0,
-        0
-      ],
-      "stageCumul": [
-        208,
-        390,
-        704,
-        925,
-        1152,
-        1235,
-        1435,
-        1755,
-        1755,
-        1755
+        2390,
+        2920
       ]
     },
     {
       "tid": "93141",
       "name": "Spinzealot",
-      "score": 1755,
+      "score": 2582,
       "manager": "Mark",
       "stageSums": [
         380,
@@ -133,8 +103,8 @@
         143,
         188,
         239,
-        0,
-        0
+        237,
+        590
       ],
       "stageCumul": [
         380,
@@ -145,8 +115,38 @@
         1328,
         1516,
         1755,
+        1992,
+        2582
+      ]
+    },
+    {
+      "tid": "1363",
+      "name": "Billabong Bunyips",
+      "score": 2571,
+      "manager": "Cathy",
+      "stageSums": [
+        208,
+        182,
+        314,
+        221,
+        227,
+        83,
+        200,
+        320,
+        236,
+        580
+      ],
+      "stageCumul": [
+        208,
+        390,
+        704,
+        925,
+        1152,
+        1235,
+        1435,
         1755,
-        1755
+        1991,
+        2571
       ]
     }
   ],
@@ -170,11 +170,11 @@
         6,
         10,
         16,
-        null,
-        null
+        14,
+        15
       ],
-      "total": 68,
-      "efficiency": 11.3
+      "total": 97,
+      "efficiency": 16.2
     },
     {
       "id": "20265439",
@@ -194,8 +194,8 @@
         0,
         0,
         0,
-        null,
-        null
+        0,
+        0
       ],
       "total": 95,
       "efficiency": 6.8
@@ -218,8 +218,8 @@
         2,
         0,
         0,
-        null,
-        null
+        0,
+        0
       ],
       "total": 8,
       "efficiency": 1.0
@@ -231,8 +231,8 @@
       "cost": 28,
       "finished": true,
       "teamIds": [
-        "1363",
-        "93141"
+        "93141",
+        "1363"
       ],
       "stages": [
         127,
@@ -243,11 +243,11 @@
         29,
         158,
         189,
-        null,
-        null
+        205,
+        415
       ],
-      "total": 855,
-      "efficiency": 30.5
+      "total": 1475,
+      "efficiency": 52.7
     },
     {
       "id": "20265400",
@@ -267,8 +267,8 @@
         0,
         0,
         0,
-        null,
-        null
+        0,
+        0
       ],
       "total": 0,
       "efficiency": 0.0
@@ -292,11 +292,11 @@
         4,
         0,
         0,
-        null,
-        null
+        0,
+        10
       ],
-      "total": 4,
-      "efficiency": 1.0
+      "total": 14,
+      "efficiency": 3.5
     },
     {
       "id": "20265478",
@@ -316,8 +316,8 @@
         25,
         0,
         0,
-        null,
-        null
+        0,
+        0
       ],
       "total": 46,
       "efficiency": 5.8
@@ -340,11 +340,11 @@
         165,
         57,
         105,
-        null,
-        null
+        15,
+        145
       ],
-      "total": 645,
-      "efficiency": 53.8
+      "total": 805,
+      "efficiency": 67.1
     },
     {
       "id": "20265091",
@@ -353,8 +353,8 @@
       "cost": 8,
       "finished": true,
       "teamIds": [
-        "1363",
-        "93141"
+        "93141",
+        "1363"
       ],
       "stages": [
         0,
@@ -365,11 +365,11 @@
         4,
         0,
         5,
-        null,
-        null
+        0,
+        30
       ],
-      "total": 79,
-      "efficiency": 9.9
+      "total": 109,
+      "efficiency": 13.6
     },
     {
       "id": "20265245",
@@ -389,11 +389,11 @@
         26,
         5,
         25,
-        null,
-        null
+        4,
+        20
       ],
-      "total": 72,
-      "efficiency": 12.0
+      "total": 96,
+      "efficiency": 16.0
     },
     {
       "id": "20265442",
@@ -415,11 +415,11 @@
         16,
         10,
         20,
-        null,
-        null
+        20,
+        60
       ],
-      "total": 475,
-      "efficiency": 29.7
+      "total": 555,
+      "efficiency": 34.7
     },
     {
       "id": "20265433",
@@ -439,11 +439,11 @@
         35,
         4,
         90,
-        null,
-        null
+        4,
+        40
       ],
-      "total": 313,
-      "efficiency": 31.3
+      "total": 357,
+      "efficiency": 35.7
     },
     {
       "id": "20265248",
@@ -463,11 +463,11 @@
         4,
         4,
         0,
-        null,
-        null
+        4,
+        20
       ],
-      "total": 16,
-      "efficiency": 2.7
+      "total": 40,
+      "efficiency": 6.7
     },
     {
       "id": "20265456",
@@ -487,8 +487,8 @@
         0,
         0,
         2,
-        null,
-        null
+        0,
+        0
       ],
       "total": 237,
       "efficiency": 16.9
@@ -511,11 +511,11 @@
         30,
         114,
         40,
-        null,
-        null
+        7,
+        90
       ],
-      "total": 569,
-      "efficiency": 40.6
+      "total": 666,
+      "efficiency": 47.6
     },
     {
       "id": "20265462",
@@ -535,11 +535,11 @@
         9,
         11,
         14,
-        null,
-        null
+        13,
+        80
       ],
-      "total": 87,
-      "efficiency": 10.9
+      "total": 180,
+      "efficiency": 22.5
     },
     {
       "id": "20265230",
@@ -559,8 +559,8 @@
         0,
         0,
         0,
-        null,
-        null
+        0,
+        0
       ],
       "total": 0,
       "efficiency": 0.0
@@ -583,11 +583,11 @@
         12,
         23,
         9,
-        null,
-        null
+        117,
+        120
       ],
-      "total": 151,
-      "efficiency": 12.6
+      "total": 388,
+      "efficiency": 32.3
     },
     {
       "id": "20265097",
@@ -607,11 +607,11 @@
         48,
         9,
         59,
-        null,
-        null
+        4,
+        95
       ],
-      "total": 399,
-      "efficiency": 49.9
+      "total": 498,
+      "efficiency": 62.2
     },
     {
       "id": "20265460",
@@ -632,11 +632,11 @@
         37,
         104,
         64,
-        null,
-        null
+        160,
+        210
       ],
-      "total": 338,
-      "efficiency": 16.9
+      "total": 708,
+      "efficiency": 35.4
     },
     {
       "id": "20265446",
@@ -657,8 +657,8 @@
         6,
         7,
         0,
-        null,
-        null
+        0,
+        0
       ],
       "total": 118,
       "efficiency": 5.9
@@ -681,8 +681,8 @@
         0,
         0,
         0,
-        null,
-        null
+        0,
+        0
       ],
       "total": 0,
       "efficiency": 0.0
@@ -705,11 +705,11 @@
         124,
         16,
         10,
-        null,
-        null
+        10,
+        95
       ],
-      "total": 383,
-      "efficiency": 31.9
+      "total": 488,
+      "efficiency": 40.7
     },
     {
       "id": "20265256",
@@ -729,11 +729,11 @@
         54,
         4,
         0,
-        null,
-        null
+        4,
+        35
       ],
-      "total": 136,
-      "efficiency": 17.0
+      "total": 175,
+      "efficiency": 21.9
     },
     {
       "id": "20265061",
@@ -753,11 +753,11 @@
         2,
         12,
         6,
-        null,
-        null
+        6,
+        5
       ],
-      "total": 24,
-      "efficiency": 6.0
+      "total": 35,
+      "efficiency": 8.8
     },
     {
       "id": "20265272",
@@ -777,8 +777,8 @@
         0,
         17,
         4,
-        null,
-        null
+        0,
+        0
       ],
       "total": 21,
       "efficiency": 3.5
@@ -801,11 +801,11 @@
         90,
         0,
         62,
-        null,
-        null
+        0,
+        30
       ],
-      "total": 170,
-      "efficiency": 21.2
+      "total": 200,
+      "efficiency": 25.0
     },
     {
       "id": "20265056",
@@ -825,11 +825,11 @@
         2,
         12,
         6,
-        null,
-        null
+        18,
+        5
       ],
-      "total": 174,
-      "efficiency": 21.8
+      "total": 197,
+      "efficiency": 24.6
     }
   ],
   "otherRiders": [
@@ -849,33 +849,11 @@
         84,
         132,
         146,
-        null,
-        null
+        102,
+        260
       ],
-      "total": 570,
-      "efficiency": 47.5
-    },
-    {
-      "id": "20265489",
-      "name": "Sigrid Ytterhus Haugset",
-      "proTeam": "Uno-X Mobility",
-      "cost": 6,
-      "finished": true,
-      "teamIds": [],
-      "stages": [
-        0,
-        0,
-        220,
-        28,
-        6,
-        4,
-        0,
-        0,
-        null,
-        null
-      ],
-      "total": 258,
-      "efficiency": 43.0
+      "total": 932,
+      "efficiency": 77.7
     },
     {
       "id": "20265065",
@@ -893,11 +871,11 @@
         20,
         188,
         125,
-        null,
-        null
+        148,
+        295
       ],
-      "total": 588,
-      "efficiency": 42.0
+      "total": 1031,
+      "efficiency": 73.6
     },
     {
       "id": "20265477",
@@ -915,11 +893,11 @@
         61,
         71,
         93,
-        null,
-        null
+        76,
+        170
       ],
-      "total": 417,
-      "efficiency": 41.7
+      "total": 663,
+      "efficiency": 66.3
     },
     {
       "id": "20265093",
@@ -937,11 +915,11 @@
         134,
         76,
         45,
-        null,
-        null
+        55,
+        165
       ],
-      "total": 480,
-      "efficiency": 40.0
+      "total": 700,
+      "efficiency": 58.3
     },
     {
       "id": "20265254",
@@ -959,11 +937,11 @@
         18,
         46,
         11,
-        null,
-        null
+        103,
+        140
       ],
-      "total": 216,
-      "efficiency": 27.0
+      "total": 459,
+      "efficiency": 57.4
     },
     {
       "id": "20265064",
@@ -981,11 +959,55 @@
         28,
         98,
         47,
-        null,
-        null
+        119,
+        175
       ],
-      "total": 302,
-      "efficiency": 25.2
+      "total": 596,
+      "efficiency": 49.7
+    },
+    {
+      "id": "20265489",
+      "name": "Sigrid Ytterhus Haugset",
+      "proTeam": "Uno-X Mobility",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [],
+      "stages": [
+        0,
+        0,
+        220,
+        28,
+        6,
+        4,
+        0,
+        0,
+        0,
+        25
+      ],
+      "total": 283,
+      "efficiency": 47.2
+    },
+    {
+      "id": "20265445",
+      "name": "Femke De Vries",
+      "proTeam": "Team Visma | Lease a Bike",
+      "cost": 6,
+      "finished": true,
+      "teamIds": [],
+      "stages": [
+        2,
+        4,
+        2,
+        16,
+        73,
+        5,
+        4,
+        7,
+        69,
+        90
+      ],
+      "total": 272,
+      "efficiency": 45.3
     },
     {
       "id": "20265177",
@@ -1003,56 +1025,34 @@
         9,
         30,
         25,
-        null,
-        null
+        8,
+        85
       ],
-      "total": 140,
-      "efficiency": 23.3
+      "total": 233,
+      "efficiency": 38.8
     },
     {
-      "id": "20265083",
-      "name": "Nikola Noskov\u00e1",
-      "proTeam": "Cofidis Women Team",
-      "cost": 4,
+      "id": "20265441",
+      "name": "Nienke Vinke",
+      "proTeam": "Team SD Worx - Protime",
+      "cost": 8,
       "finished": true,
       "teamIds": [],
       "stages": [
-        22,
-        2,
-        14,
-        6,
-        6,
-        26,
-        6,
-        6,
-        null,
-        null
-      ],
-      "total": 88,
-      "efficiency": 22.0
-    },
-    {
-      "id": "20265449",
-      "name": "Lieke Nooijen",
-      "proTeam": "Team Visma | Lease a Bike",
-      "cost": 6,
-      "finished": true,
-      "teamIds": [],
-      "stages": [
-        2,
+        12,
+        12,
+        10,
         4,
-        2,
-        120,
-        0,
-        0,
-        0,
-        2,
-        null,
-        null
+        81,
+        10,
+        8,
+        8,
+        25,
+        95
       ],
-      "total": 130,
-      "efficiency": 21.7
+      "total": 265,
+      "efficiency": 33.1
     }
   ],
-  "lastUpdated": "2026-08-09T18:38:45Z"
+  "lastUpdated": "2026-08-09T20:44:57Z"
 }
