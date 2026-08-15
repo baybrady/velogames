@@ -1,0 +1,6 @@
+.git
+.github
+.wrangler
+.venv
+__pycache__
+morgue
